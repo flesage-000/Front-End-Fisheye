@@ -1,0 +1,36 @@
+/// Fonts
+///
+/// @param {string} $color
+///   The color of font. Default inherit.
+/// @param {string} $fontSize
+///   The size of the font. Default inherit.
+/// @param {string} $fontWeight
+///   The weight of the font. Default inherit.
+/// @param {string} $lineHeight
+///   The line-height. Default inherit.
+@mixin font($color: inherit, $fontSize: inherit, $fontWeight: inherit, $lineHeight: inherit) {
+  color: $color;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}
+
+/// photograph__picture
+@mixin photograph__picture {
+  border-radius: 50%;
+  object-fit: cover;
+
+  height: 200px;
+  width: 200px;
+}
+
+/// background-opacity
+///
+/// @param {string} $color
+///   The hexadecima color.
+/// @param {string} $opacity
+///   The opacity. Min 0, max 1.
+@mixin background-opacity($color, $opacity) {
+  background: $color;
+  background: rgba($color, $opacity);
+}

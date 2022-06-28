@@ -1,36 +1,154 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.min.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
+
+    <div>
+
+      <header class="main">
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" title="FishEye" alt="Logo de FishEye" /></a>
+      </header>
+
+      <main id="main" class="photograph">
+        <section class="photograph__header">
+
+          <div class="photograph__header__card">
+            <h1 class="name">Tracy Galindo</h1>
+            <address class="location">
+              <span>London, UK</span>
+            </address>
+            <p class="tagline">
+              Voir le beau dans le quotidien
+            </p>
+          </div>
+
+          <div class="photograph__header__contact">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          </div>
+
+          <div class="photograph__header__picture">
+            <img src="assets/photographers/Photographers ID Photos/EllieRoseWilkens.jpg">
+          </div>
+
+        </section>
+
+        <section class="photograph__content">
+
+          <div class="sorter">
+            <span>Trier par</span>
+            <span class="dropdown-container">
+              <div class="dropdown">
+                <input type="radio" name="sortType" value="popularity" id="sort-popularity">
+                <label for="sort-popularity">Popularité</label>
+
+                <input type="radio" name="sortType" value="date" id="sort-date">
+                <label for="sort-date">Date</label>
+
+                <input type="radio" name="sortType" value="popularity" id="sort-titre">
+                <label for="sort-titre">Titre</label>
+              </div>
+            </span>
+          </div>
+
+          <section class="articles">
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+
+            <article class="articles__media">
+              <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
+              <span class="articles__media__name">Arc-en-ciel</span>
+              <span class="articles__media__like">
+                <span class="articles__media__like__total">12</span>
+                <span class="articles__media__like__heart"></span>
+              </span>
+            </article>
+          </section>
+
+        </section>
+      </main>
+
+    </div>
+
+    <div id="contact_modal" class="modal modalContact">
+			<div class="modal__content">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2>Contactez-moi<br><span>Tracy Galindo</span></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+          <fieldset>
+            <div>
+              <label for="contact_lastname">Prénom</label>
+              <input type="text" id="contact_lastname" placeholder="Prénom" />
+            </div>
+            <div>
+              <label for="contact_firstname">Nom</label>
+              <input type="text" id="contact_firstname" placeholder="Nom" />
+            </div>
+            <div>
+              <label for="contact_email">Email</label>
+              <input type="text" id="contact_email" placeholder="Email" />
+            </div>
+            <div>
+              <label for="contact_email">Votre message</label>
+              <textarea id="contact_email" placeholder="Votre message"></textarea>
+            </div>
+          </fieldset>
 				</form>
+        <button class="contact_submit">Envoyer</button>
 			</div>
 		</div>
+
+    <script src="/css/scss/vendors/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="/scripts/utils/dropdown.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

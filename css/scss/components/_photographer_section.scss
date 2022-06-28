@@ -1,0 +1,61 @@
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
+
+  article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+
+    & > span {
+      color: $clr-grey-light;
+
+      font-size: 9px;
+      font-weight: 400;
+      line-height: 12px;
+    }
+  }
+
+  address {
+    color: $clr-red-dark-01;
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 17px;
+  }
+
+  h2 {
+    color: $clr-red-light;
+
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+  }
+
+  img {
+    @include photograph__picture;
+  }
+
+  p {
+    color: $clr-black;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 13px;
+  }
+
+  address span {
+    color: $clr-black;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 13px;
+  }
+
+}

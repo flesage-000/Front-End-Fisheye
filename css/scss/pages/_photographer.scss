@@ -1,0 +1,70 @@
+#contact_modal {
+  display: none;
+}
+.photograph {
+  &__header {
+    background-color: $clr-white-alabaster;
+
+    // height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(200px, 1fr);
+    gap: 20px;
+
+    > div {
+      padding: 71px 50px;
+      display: flex;
+      flex-direction: column;
+    }
+    &__card {
+      .name {
+        @include font($color: $clr-red-light, $fontSize: 64px, $fontWeight: 400, $lineHeight: 83px);
+      }
+      .location {
+        @include font($color: $clr-red-dark-01, $fontSize: 24px, $fontWeight: 400, $lineHeight: 31px);
+      }
+      .tagline {
+        @include font($color: $clr-grey-vampire, $fontSize: 18px, $fontWeight: 400, $lineHeight: 23px);
+      }
+    }
+    &__contact {
+      align-items: center;
+      justify-content: center;
+    }
+    &__picture {
+      align-items: center;
+      justify-content: center;
+      img {
+        @include photograph__picture;
+      }
+    }
+  }
+  &__content {
+    .dropdown-container {
+      position: relative;
+      .dropdown {
+        position: absolute;
+        top: 0;
+        left: 5px;
+      }
+    }
+  }
+  &__header,
+  &__content {
+    margin: 0 100px;
+  }
+  &__content {
+    margin-top: 20px;
+
+    .sorter {
+      span {}
+      span::first-child {
+
+      }
+    }
+    .articles {
+      margin-top: 58px;
+    }
+  }
+}
+
+/// {}

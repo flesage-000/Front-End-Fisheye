@@ -1,0 +1,55 @@
+.modal {
+  @include background-opacity($color: $clr-grey-nickel, $opacity: .4);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__content {
+    background-color: $clr-pale-copper-01;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    max-height: calc(100VH - 2 * 62px);
+    max-width: 669px;
+    margin: 62px auto;
+
+    header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 0 35px;
+      width: 100%;
+
+      h2 {
+        @include font($color: $clr-black, $fontSize: 64px, $fontWeight: 400, $lineHeight: 83px);
+        flex: 1;
+      }
+
+      img {
+        cursor: pointer;
+
+        flex: 0;
+        height: 42px;
+        margin: 20px 0 35px 35px;
+        width: 42px;
+      }
+    }
+    form {
+      margin: 0 17px;
+      width: calc(100% - 2 * 17.5px);
+
+      fieldset {
+        padding: 0 17.5px;
+      }
+    }
+  }
+}
+
+// {}

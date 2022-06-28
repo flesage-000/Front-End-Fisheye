@@ -1,0 +1,36 @@
+form {
+  width: 100%;
+
+  div {
+    align-items: self-start;
+    display: flex;
+    flex-direction: column;
+    // margin-bottom: 0;
+
+    label {
+      @include font($color: $clr-thunder, $fontSize: 36px, $fontWeight: 400, $lineHeight: 47px);
+      mix-blend-mode: normal;
+      margin-bottom: 5px;
+    }
+    textarea,
+    input {
+      @include font($color: $clr-black, $fontSize: 36px, $fontWeight: 400, $lineHeight: 47px);
+      background-color: $clr-white;
+      border-radius: 5px;
+
+      width: 100%;
+      padding: 25px 21px;
+    }
+    input {
+      height: 68px;
+    }
+    textarea {
+      height: 170px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+/// {}
