@@ -9,7 +9,8 @@ function photographFactory(data) {
         const article = document.createElement( 'article' );
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        const imgSrc = replaceSpace(picture);
+        img.setAttribute("src", imgSrc);
 
         const h2 = document.createElement( 'h2' );
         const link = document.createElement( 'a' );

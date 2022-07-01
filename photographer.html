@@ -16,27 +16,7 @@
       </header>
 
       <main id="main" class="photograph">
-        <section class="photograph__header">
-
-          <div class="photograph__header__card">
-            <h1 class="name">Tracy Galindo</h1>
-            <address class="location">
-              <span>London, UK</span>
-            </address>
-            <p class="tagline">
-              Voir le beau dans le quotidien
-            </p>
-          </div>
-
-          <div class="photograph__header__contact">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-          </div>
-
-          <div class="photograph__header__picture">
-            <img src="assets/photographers/Photographers ID Photos/EllieRoseWilkens.jpg">
-          </div>
-
-        </section>
+        <section class="photograph__header"></section>
 
         <section class="photograph__content">
 
@@ -57,7 +37,7 @@
           </div>
 
           <section class="articles">
-            <article class="articles__media">
+            <!-- <article class="articles__media">
               <img src="/assets/photographers/Ellie Rose/Architecture_Connected_Curves.jpg" class="articles__media__img">
               <span class="articles__media__name">Arc-en-ciel</span>
               <span class="articles__media__like">
@@ -109,7 +89,7 @@
                 <span class="articles__media__like__total">12</span>
                 <span class="articles__media__like__heart"></span>
               </span>
-            </article>
+            </article> -->
           </section>
 
         </section>
@@ -147,8 +127,11 @@
 			</div>
 		</div>
 
+    <script src="scripts/factories/data.js"></script>
+    <script src="scripts/utils/basics_functions.js"></script>
+    <script src="scripts/factories/photographer_page.js"></script>
 
-    <script src="scripts/factories/photograph.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
     <script src="/css/scss/vendors/glightbox/dist/js/glightbox.min.js"></script>
     <script src="/scripts/utils/dropdown.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
