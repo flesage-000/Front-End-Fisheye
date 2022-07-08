@@ -1,0 +1,88 @@
+.lightbox {
+  background-color: $clr-white;
+  @include font($color: $clr-red-dark-01, $fontSize: 42px, $fontWeight: 900);
+
+  display: flex;
+  flex-direction: row;
+  padding: 40px 86px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &.close {
+    display: none;
+  }
+  &__controller,
+  &__viewer {
+    border-color: $clr-light-aquamarine;
+    border-style: solid;
+    border-width: 0;
+
+    height: 100%;
+  }
+
+  &__controller {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    padding: 0 15px;
+
+    &__forward {
+      border-top-width: 2px;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+      :before  {
+        content: '\02C2';
+      }
+    }
+
+    &__next {
+      border-top-width: 2px;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      :before {
+        content: '\02C3';
+      }
+    }
+
+    &__closer {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+
+      a:before {
+        content: '\2716';
+      }
+    }
+  }
+  &__controller:first-child {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+  }
+  &__controller:last-child {
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+  }
+  &__viewer {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    flex: 1 0;
+    padding: 22px 0;
+
+    img  {
+      object-fit: contain;
+    }
+    video {}
+  }
+}

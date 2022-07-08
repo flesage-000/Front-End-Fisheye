@@ -28,4 +28,11 @@ function getUrlParameter(parameter) {
 }
 return false;
 }
-/// {}
+
+/**
+ * Return url pathname
+ * @returns string
+ */
+function getWindowPathName() {// console.log('window.location.pathname', window.location.pathname);
+  return window.location.pathname
+}

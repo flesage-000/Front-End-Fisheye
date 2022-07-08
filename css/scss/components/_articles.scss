@@ -12,7 +12,8 @@
       object-fit: cover;
 
       height: 300px;
-      width: 350px;
+      // width: 350px;
+      width: 300px;
     }
     &__name {
       @include font($color: $clr-red-dark-01, $fontSize: 24px, $fontWeight: 400, $lineHeight: 31px);

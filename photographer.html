@@ -12,7 +12,7 @@
     <div>
 
       <header class="main">
-        <a href="index.html"><img src="assets/images/logo.png" class="logo" title="FishEye" alt="Logo de FishEye" /></a>
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" title="FishEye" alt="FishEye Home page" /></a>
       </header>
 
       <main id="main" class="photograph">
@@ -95,6 +95,8 @@
         </section>
       </main>
 
+      <div class="cta"></div>
+
     </div>
 
     <div id="contact_modal" class="modal modalContact">
@@ -127,16 +129,43 @@
 			</div>
 		</div>
 
-    <script src="scripts/factories/data.js"></script>
-    <script src="scripts/utils/basics_functions.js"></script>
-    <script src="scripts/factories/photographer_page.js"></script>
+    <div id="lightbox" class="lightbox close">
+      <div class="lightbox__controller">
+        <div class="lightbox__controller__forward">
+          <a href="#"></a>
+        </div>
+      </div>
+      <div class="lightbox__viewer"></div>
+      <div class="lightbox__controller">
+        <div class="lightbox__controller__closer">
+          <a href="#" class="close"></a>
+        </div>
+        <div class="lightbox__controller__next">
+          <a href="#"></a>
+        </div>
+      </div>
+    </div>
 
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="/css/scss/vendors/glightbox/dist/js/glightbox.min.js"></script>
-    <script src="/scripts/utils/dropdown.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/basics_functions.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/dropdown.js"></script>
+    <script src="./scripts/Factory/Factory.js"></script>
+    <script src="./scripts/Api/Api.js"></script>
 
-    <script src="/scripts/Models/Media.js"></script>
-    <script src="/scripts/Api/api.js"></script>
+    <script src="./scripts/Templates/MediaCard.js"></script>
+    <script src="./scripts/Templates/PhotographerHeader.js"></script>
+    <script src="./scripts/Templates/PhotographerCta.js"></script>
+    <script src="./scripts/Templates/PhotographerLightbox.js"></script>
+
+    <script src="./scripts/Models/Photographers.js"></script>
+    <script src="./scripts/Models/Medias.js"></script>
+
+    <script src="./scripts/App.js"></script>
+
+    <script src="./scripts/utils/likes.js"></script>
+
+    <script src="./scripts/pages/photographer.js"></script>
+
+
   </body>
 </html>
