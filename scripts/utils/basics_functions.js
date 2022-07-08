@@ -25,8 +25,8 @@ function getUrlParameter(parameter) {
     if (parameterName[0] === parameter) {
         return parameterName[1] === undefined ? true : decodeURIComponent(parameterName[1]);
     }
-}
-return false;
+  }
+  return false;
 }
 
 /**

@@ -1,11 +1,20 @@
 class Factory {
   constructor(data, str) {
-    if (str === '/index.html' || str === 'photographerHeader') {
-      return new Photographers(data)
-    } else if (str === '/photographer.html') {
-      return new Medias(data)
-    } else {
-      throw 'unknwon str !!!';
+    switch (str) {
+      case 'index':
+        return new Photographers(data)
+        break;
+
+      case 'photographerHeader':
+        return new Photographers(data)
+        break;
+
+      case 'photographer':
+        return new Medias(data)
+        break;
+
+      default:
+        throw 'unknwon str !!!';
     }
   }
 }
