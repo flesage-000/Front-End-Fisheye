@@ -52,6 +52,7 @@ class MediaCard {
   }
 
   commonEvents($wrapper) {
+    // Manage likes
     this.eventsListeners.addListener(
       function() {
         const element = $wrapper.querySelector('.articles__media__like__heart');
@@ -61,6 +62,18 @@ class MediaCard {
 
           const likes = new Likes()
           likes.increase(event)
+        });
+      }
+    );
+
+    // Manage lightbox open
+    this.eventsListeners.addListener(
+      function() {
+        const element = $wrapper.querySelector('.lightboxOpener');
+
+        element.addEventListener('click', function() {
+          const lightboxContainer = document.querySelector('#lightbox');
+          lightboxContainer.classList.remove('close');
         });
       }
     );

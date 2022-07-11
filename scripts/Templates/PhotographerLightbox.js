@@ -1,12 +1,11 @@
 class PhotographerLightbox {
   constructor(data) {
     this._data = data;
+    this.eventsListeners = new eventsListeners();
   }
 
   createImageLightbox() {
     const $wrapper = document.createElement('div');
-    // $wrapper.classList.add('');
-
     const image = `
       <img src="${this._data.image}">
     `;
@@ -42,8 +41,8 @@ class PhotographerLightbox {
      * Lightbox forward media
     */
     lightboxForward.addEventListener('click', function(event) {
-      event.preventDefault;
-      event.stopPropagation;
+      event.preventDefault();
+      event.stopPropagation();
 
       console.log('FORWARD CLICKED');
     });
@@ -52,8 +51,8 @@ class PhotographerLightbox {
      * Lightbox next media
     */
     lightboxNext.addEventListener('click', function(event) {
-      event.preventDefault;
-      event.stopPropagation;
+      event.preventDefault();
+      event.stopPropagation();
 
       console.log('NEXT CLICKED');
     });
@@ -61,17 +60,11 @@ class PhotographerLightbox {
     /**
     * Lightbox closer
     */
-    lightboxClose.addEventListener('click', function() {
+    lightboxClose.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
       lightbox.classList.add('close');
     });
-
-    /**
-    * lightbox opener
-    */
-    lightboxOpener.forEach(element => {
-      element.addEventListener('click', function() {
-        lightbox.classList.remove('close');
-      });
-    })
   }
 }
