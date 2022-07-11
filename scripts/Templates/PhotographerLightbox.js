@@ -35,7 +35,6 @@ class PhotographerLightbox {
     const lightboxClose = lightbox.querySelector('.lightbox__controller__closer');
     const lightboxForward = lightbox.querySelector('.lightbox__controller__forward');
     const lightboxNext = lightbox.querySelector('.lightbox__controller__next');
-    const lightboxOpener = document.querySelectorAll('.lightboxOpener');
 
     /**
      * Lightbox forward media
