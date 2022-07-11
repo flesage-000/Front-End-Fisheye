@@ -4,9 +4,10 @@ class MediaCard {
     this.eventsListeners = new eventsListeners();
   }
 
-  createImageCard() {
+  createImageCard(index) {
     const $wrapper = document.createElement('article');
     $wrapper.classList.add('articles__media');
+    $wrapper.setAttribute('data-index', index);
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><img src="${this._media.image}" class="articles__media__img"></a>
       <span class="articles__media__name">${this._media.title}</span>
@@ -18,17 +19,17 @@ class MediaCard {
 
     $wrapper.innerHTML = mediaCard;
 
-    this.commonEvents($wrapper);
-
     // Add listeners
+    this.commonEvents($wrapper);
     this.eventsListeners.ifListener();
 
     return $wrapper
   }
 
-  createVideoCard() {
+  createVideoCard(index) {
     const $wrapper = document.createElement('article');
     $wrapper.classList.add('articles__media');
+    $wrapper.setAttribute('data-index', index);
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><video class="articles__media__img">
         <source src="${this._media.video}"
@@ -44,13 +45,14 @@ class MediaCard {
 
     $wrapper.innerHTML = mediaCard;
 
-    this.commonEvents($wrapper);
     // Add listeners
+    this.commonEvents($wrapper);
     this.eventsListeners.ifListener();
 
     return $wrapper
   }
 
+  // Because some events are availables for both media types (image and video)
   commonEvents($wrapper) {
     // Manage likes
     this.eventsListeners.addListener(
@@ -71,8 +73,14 @@ class MediaCard {
       function() {
         const element = $wrapper.querySelector('.lightboxOpener');
 
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          const articlesContainer = event.target.closest('.articles__media');
+          const index = articlesContainer.dataset.index;
           const lightboxContainer = document.querySelector('#lightbox');
+
+          lightboxContainer.querySelector('[data-index="' + index + '"]').style.display = 'flex';
           lightboxContainer.classList.remove('close');
         });
       }

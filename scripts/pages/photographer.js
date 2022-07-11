@@ -63,17 +63,17 @@ class AppPhotographer {
         // Generate HTML according media type
         if (media.image !== null) {
           this.$mediaWrapper.appendChild(
-            MediaTemplate.createImageCard()
+            MediaTemplate.createImageCard(index)
           );
           this.$lightboxWrapper.appendChild(
-            LightboxTemplate.createImageLightbox()
+            LightboxTemplate.createImageLightbox(index)
           );
         } else {
           this.$mediaWrapper.appendChild(
-            MediaTemplate.createVideoCard()
+            MediaTemplate.createVideoCard(index)
           );
           this.$lightboxWrapper.appendChild(
-            LightboxTemplate.createVideoLightbox()
+            LightboxTemplate.createVideoLightbox(index)
           );
         }
 

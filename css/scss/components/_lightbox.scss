@@ -20,6 +20,18 @@
     border-width: 0;
 
     height: 100%;
+
+    &__media {
+      display: none;
+
+      height: 100%;
+      min-width: 100%;
+      width: 100%;
+
+      video {
+        width: 100%;
+      }
+    }
   }
 
   &__controller {

@@ -4,8 +4,10 @@ class PhotographerLightbox {
     this.eventsListeners = new eventsListeners();
   }
 
-  createImageLightbox() {
+  createImageLightbox(index) {
     const $wrapper = document.createElement('div');
+    $wrapper.classList.add('lightbox__viewer__media');
+    $wrapper.setAttribute('data-index', index);
     const image = `
       <img src="${this._data.image}">
     `;
@@ -15,8 +17,10 @@ class PhotographerLightbox {
     return $wrapper
   }
 
-  createVideoLightbox() {
+  createVideoLightbox(index) {
     const $wrapper = document.createElement('div');
+    $wrapper.classList.add('lightbox__viewer__media');
+    $wrapper.setAttribute('data-index', index);
 
     const video = `
       <video controls width="250">
