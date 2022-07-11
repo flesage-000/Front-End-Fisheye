@@ -53,6 +53,22 @@ class MediaCard {
     `;
 
     $wrapper.innerHTML = mediaCard;
+
+    this.eventsListeners.addListener(
+      function() {
+        const element = $wrapper.querySelector('.articles__media__like__heart');
+        element.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          const likes = new Likes()
+          likes.increase(event)
+        });
+      }
+    );
+
+    // Add listeners
+    this.eventsListeners.ifListener();
+
     return $wrapper
   }
 }
