@@ -18,7 +18,6 @@ class PhotographerLightbox {
 
   createVideoLightbox() {
     const $wrapper = document.createElement('div');
-    // $wrapper.classList.add('');
 
     const video = `
       <video controls width="250">

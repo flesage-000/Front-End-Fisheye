@@ -35,7 +35,6 @@ function filter() {
   });
 
   document.addEventListener('click', function() {
-    console.log('removeClass', dropdown);
     dropdown.classList.remove('expanded');
   });
 }

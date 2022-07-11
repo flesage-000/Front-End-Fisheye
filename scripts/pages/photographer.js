@@ -77,6 +77,10 @@ class AppPhotographer {
           );
         }
 
+        // MediaTemplate.setEvent(function() {
+        //   console.log('setEvent');
+        // });
+
         // lightbox init
         if (index == array.length - 1) {
           LightboxTemplate.lightbox();

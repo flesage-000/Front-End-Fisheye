@@ -1,6 +1,7 @@
 class MediaCard {
   constructor(media) {
     this._media = media;
+    this.eventsListeners = new eventsListeners();
   }
 
   createImageCard() {
@@ -11,11 +12,27 @@ class MediaCard {
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
         <span class="articles__media__like__total">${this._media.likes}</span>
-        <a href="#" class="articles__media__like__heart" onclick="likes(this)"></a>
+        <a href="#" class="articles__media__like__heart"></a>
       </span>
     `;
 
     $wrapper.innerHTML = mediaCard;
+
+    this.eventsListeners.addListener(
+      function() {
+        const element = $wrapper.querySelector('.articles__media__like__heart');
+        element.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          const likes = new Likes()
+          likes.increase(event)
+        });
+      }
+    );
+
+    // Add listeners
+    this.eventsListeners.ifListener();
+
     return $wrapper
   }
 
@@ -31,7 +48,7 @@ class MediaCard {
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
         <span class="articles__media__like__total">${this._media.likes}</span>
-        <a href="#" class="articles__media__like__heart" onclick="likes(this)"></a>
+        <a href="#" class="articles__media__like__heart"></a>
       </span>
     `;
 
