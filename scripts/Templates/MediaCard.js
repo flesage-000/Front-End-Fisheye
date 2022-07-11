@@ -18,17 +18,7 @@ class MediaCard {
 
     $wrapper.innerHTML = mediaCard;
 
-    this.eventsListeners.addListener(
-      function() {
-        const element = $wrapper.querySelector('.articles__media__like__heart');
-        element.addEventListener('click', function(event) {
-          event.preventDefault();
-
-          const likes = new Likes()
-          likes.increase(event)
-        });
-      }
-    );
+    this.commonEvents($wrapper);
 
     // Add listeners
     this.eventsListeners.ifListener();
@@ -54,9 +44,18 @@ class MediaCard {
 
     $wrapper.innerHTML = mediaCard;
 
+    this.commonEvents($wrapper);
+    // Add listeners
+    this.eventsListeners.ifListener();
+
+    return $wrapper
+  }
+
+  commonEvents($wrapper) {
     this.eventsListeners.addListener(
       function() {
         const element = $wrapper.querySelector('.articles__media__like__heart');
+
         element.addEventListener('click', function(event) {
           event.preventDefault();
 
@@ -65,10 +64,5 @@ class MediaCard {
         });
       }
     );
-
-    // Add listeners
-    this.eventsListeners.ifListener();
-
-    return $wrapper
   }
 }
