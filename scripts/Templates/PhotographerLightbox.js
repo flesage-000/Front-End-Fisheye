@@ -51,20 +51,22 @@ class PhotographerLightbox {
             break;
           case 'close':
             lightbox.classList.add('close');
+            // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
+            lightbox.querySelector('.lightbox__viewer__media[style^="display"]').style.display = null;
             break;
         }
       })
     });
   }
 
-  ManageNextPrevLightbox(lightbox, type) {
+  ManageNextPrevLightbox(lightbox, action) {
     const allMedia = lightbox.querySelectorAll('.lightbox__viewer__media');
     const allMediaLength = allMedia.length;
     const currentMedia = lightbox.querySelector('.lightbox__viewer__media[style^="display"]');
     const currentIndex = currentMedia.dataset.index;
-    const nextIndex = getNextIndex(allMediaLength, currentIndex, type);
-    currentMedia.style.display = null;
+    const nextIndex = getNextIndex(allMediaLength, currentIndex, action);
 
+    currentMedia.style.display = null;
     lightbox.querySelector('[data-index="' + nextIndex + '"]').style.display = 'flex';
 
     /**
@@ -74,11 +76,11 @@ class PhotographerLightbox {
      * @param {string} type direction of next index 'next' or 'forward'
      * @returns next index to display
      */
-    function getNextIndex(allMediaLength, currentIndex, type) {
+    function getNextIndex(allMediaLength, currentIndex, action) {
       let index = null;
       currentIndex = currentIndex * 1; // convert string to number
 
-      switch(type) {
+      switch(action) {
         case 'next':
           if (currentIndex + 1 > allMediaLength - 1) index = 0;
           else index = currentIndex + 1;
