@@ -54,6 +54,23 @@ class AppPhotographer {
         // Get data from photographer ID
         return media.photographerId == photographerID
       })
+      .sort(function (a, b) {
+        const sortType = 'date';
+        let result = null;
+        switch(sortType) {
+          case 'popularity':
+            result = a.likes - b.likes;
+            break;
+          case 'title':
+            result = a.title.localeCompare(b.title);
+            break;
+          case 'date':
+          default:
+            result = new Date(a.date) + new Date(b.date);
+            break;
+        }
+        return result
+      })
       .forEach((media, index, array) => {
         media = new Factory(media, 'photographer');
 
@@ -76,10 +93,6 @@ class AppPhotographer {
             LightboxTemplate.createVideoLightbox(index)
           );
         }
-
-        // MediaTemplate.setEvent(function() {
-        //   console.log('setEvent');
-        // });
 
         // lightbox init
         if (index == array.length - 1) {
