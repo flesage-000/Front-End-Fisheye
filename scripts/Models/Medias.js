@@ -24,7 +24,7 @@ class Medias {
 
   get image() {
     if (this._image !== undefined) {
-      return '/assets/photographers/' + this._photographerID + '/' + this._image
+      return './assets/photographers/' + this._photographerID + '/' + this._image
     } else {
       return null
     }
@@ -32,7 +32,7 @@ class Medias {
 
   get video() {
     if (this._video !== undefined) {
-      return '/assets/photographers/' + this._photographerID + '/' + this._video
+      return './assets/photographers/' + this._photographerID + '/' + this._video
     } else {
       return null
     }
