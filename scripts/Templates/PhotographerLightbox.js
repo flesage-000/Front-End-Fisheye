@@ -39,23 +39,25 @@ class PhotographerLightbox {
     const lightboxButtons = lightbox.querySelectorAll('a');
 
     lightboxButtons.forEach(button => {
-      button.addEventListener('click', function(event) {
-        event.preventDefault();
-        const action = this.dataset.action;
+      this.eventsListeners.addListener(
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          const action = this.dataset.action;
 
-        switch(action) {
-          case 'next':
-          case 'forward':
-            const Navlightbox = new PhotographerLightbox();
-            Navlightbox.ManageNextPrevLightbox(lightbox, action);
-            break;
-          case 'close':
-            lightbox.classList.add('close');
-            // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
-            lightbox.querySelector('.lightbox__viewer__media[style^="display"]').style.display = null;
-            break;
-        }
-      })
+          switch(action) {
+            case 'next':
+            case 'forward':
+              const Navlightbox = new PhotographerLightbox();
+              Navlightbox.ManageNextPrevLightbox(lightbox, action);
+              break;
+            case 'close':
+              lightbox.classList.add('close');
+              // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
+              lightbox.querySelector('.lightbox__viewer__media[style^="display"]').style.display = null;
+              break;
+          }
+        })
+      );
     });
   }
 
