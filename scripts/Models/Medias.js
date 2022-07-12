@@ -31,7 +31,7 @@ class Medias {
   }
 
   get video() {
-    if (this._video !== undefined) {
+    if (this._video !== undefined){
       return './assets/photographers/' + this._photographerID + '/' + this._video
     } else {
       return null
