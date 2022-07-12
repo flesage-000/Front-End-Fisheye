@@ -6,8 +6,6 @@ class MediaCard {
 
   createImageCard(index) {
     const $wrapper = document.createElement('article');
-    $wrapper.classList.add('articles__media');
-    $wrapper.setAttribute('data-index', index);
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><img src="${this._media.image}" class="articles__media__img"></a>
       <span class="articles__media__name">${this._media.title}</span>
@@ -18,6 +16,8 @@ class MediaCard {
     `;
 
     $wrapper.innerHTML = mediaCard;
+    $wrapper.classList.add('articles__media');
+    $wrapper.setAttribute('data-index', index);
 
     // Add listeners
     this.commonEvents($wrapper);
@@ -28,12 +28,9 @@ class MediaCard {
 
   createVideoCard(index) {
     const $wrapper = document.createElement('article');
-    $wrapper.classList.add('articles__media');
-    $wrapper.setAttribute('data-index', index);
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><video class="articles__media__img">
-        <source src="${this._media.video}"
-                type="video/mp4">
+        <source src="${this._media.video}" type="video/mp4">
         Sorry, your browser doesn't support embedded videos.
       </video></a>
       <span class="articles__media__name">${this._media.title}</span>
@@ -44,6 +41,8 @@ class MediaCard {
     `;
 
     $wrapper.innerHTML = mediaCard;
+    $wrapper.classList.add('articles__media');
+    $wrapper.setAttribute('data-index', index);
 
     // Add listeners
     this.commonEvents($wrapper);

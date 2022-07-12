@@ -45,9 +45,11 @@ class PhotographerLightbox {
     */
     lightboxForward.addEventListener('click', function(event) {
       event.preventDefault();
-      event.stopPropagation();
 
-      console.log('FORWARD CLICKED');
+      const Navlightbox = new PhotographerLightbox();
+
+      console.log('FORWARD CLICKED', this);
+      Navlightbox.ManageNextPrevLightbox(lightbox, 'forward');
     });
 
     /**
@@ -55,9 +57,11 @@ class PhotographerLightbox {
     */
     lightboxNext.addEventListener('click', function(event) {
       event.preventDefault();
-      event.stopPropagation();
 
-      console.log('NEXT CLICKED');
+      const Navlightbox = new PhotographerLightbox();
+
+      console.log('NEXT CLICKED', Navlightbox);
+      Navlightbox.ManageNextPrevLightbox(lightbox, 'next');
     });
 
     /**
@@ -65,9 +69,45 @@ class PhotographerLightbox {
     */
     lightboxClose.addEventListener('click', function(event) {
       event.preventDefault();
-      event.stopPropagation();
+
+      const Navlightbox = new PhotographerLightbox();
 
       lightbox.classList.add('close');
     });
+  }
+
+  ManageNextPrevLightbox(lightbox, type) {
+    const allMedia = lightbox.querySelectorAll('.lightbox__viewer__media');
+    const allMediaLength = allMedia.length;
+    const currentMedia = lightbox.querySelector('.lightbox__viewer__media[style^="display"]');
+    const currentIndex = currentMedia.dataset.index;
+    const nextIndex = getNextIndex(allMediaLength, currentIndex, type);
+    currentMedia.style.display = null;
+
+    lightbox.querySelector('[data-index="' + nextIndex + '"]').style.display = 'flex';
+
+    /**
+     * Return the next index to display.
+     * @param {int} allMediaLength
+     * @param {string} currentIndex current index
+     * @param {string} type direction of next index 'next' or 'forward'
+     * @returns next index to display
+     */
+    function getNextIndex(allMediaLength, currentIndex, type) {
+      let index = null;
+      currentIndex = currentIndex * 1; // convert string to number
+
+      switch(type) {
+        case 'next':
+          if (currentIndex + 1 > allMediaLength - 1) index = 0;
+          else index = currentIndex + 1;
+        break;
+        case 'forward':
+          if (currentIndex - 1 < 0) index = allMediaLength - 1;
+          else index = currentIndex - 1;
+        break
+      }
+      return index
+    }
   }
 }
