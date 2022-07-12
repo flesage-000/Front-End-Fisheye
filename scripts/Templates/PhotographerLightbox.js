@@ -36,43 +36,24 @@ class PhotographerLightbox {
 
   lightbox() {
     const lightbox = document.querySelector('#lightbox');
-    const lightboxClose = lightbox.querySelector('.lightbox__controller__closer');
-    const lightboxForward = lightbox.querySelector('.lightbox__controller__forward');
-    const lightboxNext = lightbox.querySelector('.lightbox__controller__next');
+    const lightboxButtons = lightbox.querySelectorAll('a');
 
-    /**
-     * Lightbox forward media
-    */
-    lightboxForward.addEventListener('click', function(event) {
-      event.preventDefault();
+    lightboxButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const action = this.dataset.action;
 
-      const Navlightbox = new PhotographerLightbox();
-
-      console.log('FORWARD CLICKED', this);
-      Navlightbox.ManageNextPrevLightbox(lightbox, 'forward');
-    });
-
-    /**
-     * Lightbox next media
-    */
-    lightboxNext.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      const Navlightbox = new PhotographerLightbox();
-
-      console.log('NEXT CLICKED', Navlightbox);
-      Navlightbox.ManageNextPrevLightbox(lightbox, 'next');
-    });
-
-    /**
-    * Lightbox closer
-    */
-    lightboxClose.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      const Navlightbox = new PhotographerLightbox();
-
-      lightbox.classList.add('close');
+        switch(action) {
+          case 'next':
+          case 'forward':
+            const Navlightbox = new PhotographerLightbox();
+            Navlightbox.ManageNextPrevLightbox(lightbox, action);
+            break;
+          case 'close':
+            lightbox.classList.add('close');
+            break;
+        }
+      })
     });
   }
 
