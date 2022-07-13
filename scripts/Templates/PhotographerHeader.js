@@ -22,19 +22,6 @@ class PhotographerHeader {
     return $wrapper
   }
 
-  createPhotographerHeaderContact() {
-    const $wrapper = document.createElement('div');
-    $wrapper.classList.add('photograph__header__contact');
-
-    const photographerContact = `
-      <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
-    `;
-
-    $wrapper.innerHTML = photographerContact;
-
-    return $wrapper
-  }
-
   createPhotographerHeaderPicture() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph__header__picture');

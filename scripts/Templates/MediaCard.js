@@ -1,7 +1,9 @@
 class MediaCard {
   constructor(media) {
     this._media = media;
+
     this.eventsListeners = new eventsListeners();
+    this._contact = new Contact();
   }
 
   createImageCard(index) {

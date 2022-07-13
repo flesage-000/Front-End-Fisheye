@@ -83,35 +83,7 @@
 
     </div>
 
-    <div id="contact_modal" class="modal modalContact">
-			<div class="modal__content">
-				<header>
-          <h2>Contactez-moi<br><span>Tracy Galindo</span></h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-          <fieldset>
-            <div>
-              <label for="contact_lastname">Prénom</label>
-              <input type="text" id="contact_lastname" placeholder="Prénom" />
-            </div>
-            <div>
-              <label for="contact_firstname">Nom</label>
-              <input type="text" id="contact_firstname" placeholder="Nom" />
-            </div>
-            <div>
-              <label for="contact_email">Email</label>
-              <input type="text" id="contact_email" placeholder="Email" />
-            </div>
-            <div>
-              <label for="contact_email">Votre message</label>
-              <textarea id="contact_email" placeholder="Votre message"></textarea>
-            </div>
-          </fieldset>
-				</form>
-        <button class="contact_submit">Envoyer</button>
-			</div>
-		</div>
+    <div id="contact_modal"></div>
 
     <div id="lightbox" class="lightbox close">
       <div class="lightbox__controller">
@@ -139,6 +111,7 @@
     <script src="./scripts/Api/Api.js"></script>
 
 
+    <script src="./scripts/Templates/Contact.js"></script>
     <script src="./scripts/Templates/MediaCard.js"></script>
     <script src="./scripts/Templates/PhotographerHeader.js"></script>
     <script src="./scripts/Templates/PhotographerCta.js"></script>

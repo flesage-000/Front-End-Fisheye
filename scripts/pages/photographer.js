@@ -15,6 +15,8 @@ class AppPhotographer {
     this.$photographerCtaWrapper = document.querySelector('.cta');
     // HTML lightbox
     this.$lightboxWrapper = document.querySelector('#lightbox .lightbox__viewer');
+    // HTML modal form
+    this.$modalWrapper = document.querySelector('#contact_modal');
   }
 
   CreatePhotographer(sortType) {
@@ -34,10 +36,15 @@ class AppPhotographer {
           photographerCard.createPhotographerHeaderCard()
         );
 
-        const photographerContact = new PhotographerHeader(photographer);
+        const contact = new Contact(photographer);
         this.$photographerHeaderWrapper.appendChild(
-          photographerContact.createPhotographerHeaderContact()
+          contact.button()
         );
+        this.$modalWrapper.classList.add('modal', 'modalContact');
+        this.$modalWrapper.appendChild(
+          contact.form()
+        );
+        contact.init();
 
         const photographerPicture = new PhotographerHeader(photographer);
         this.$photographerHeaderWrapper.appendChild(
