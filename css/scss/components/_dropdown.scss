@@ -1,59 +1,93 @@
 // https://codepen.io/j0be/pen/jWGVvV?editors=1100
+
 .dropdown {
-  background-color: $clr-red-dark-02;
-  border-radius: 5px;
-  color: $clr-white;
-  cursor: pointer;
-  white-space:  nowrap;
-
-  display: inline-block;
-  overflow: hidden;
+  min-width: 12em;
   position: relative;
-  height: 2em;
+  display: inline-block;
+  margin-right: 1em;
+  min-height: 2em;
+  max-height:2em;
+  overflow:hidden;
+  top: .5em;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  color: #444;
 
+  outline: none;
+  border: .06em solid transparent;
+  border-radius: 1em;
+  background-color: #FFF;
+
+  transition: $timer-fast all ease-in-out;
+  input:focus + label {
+    background: #def;
+  }
+  input {
+    width: 1px;
+    height: 1px;
+    display: inline-block;
+    position: absolute;
+    opacity: 0.01;
+  }
   label {
-    display: block;
-    position: relative;
-
-    line-height: 2em;
+    border-top: .06em solid #d9d9d9;
+    display:block;
     height: 2em;
-    padding: 0 60px 0 20px;
-
-    &:not(:first-of-type):before {
-      border-bottom: solid 1px $clr-white;
-      content: '';
-      transition: $timer-fast all ease-in-out;
-
-      position: absolute;
-      top: 0;
-      right: 10px;
-      // bottom: 0;
-      left: 10px;
+    line-height: 2em;
+    padding-left: 1em;
+    padding-right: 3em;
+    cursor: pointer;
+    position: relative;
+    transition: $timer-fast color ease-in-out;
+    &:nth-child(2) {
+      margin-top: 2em;
+      border-top: .06em solid #d9d9d9;
     }
   }
-
-  input {
+  input:checked + label {
     display:block;
     border-top: none;
     position: absolute;
     top: 0;
     width: 100%;
 
-    &:checked + label {
-      display: block;
-      &:after {
-        @include font($fontSize:40px, $fontWeight: 100, $lineHeight: 0);
-        content: '\032D';
-
-        position: absolute;
-        top: -4px;
-        right: 22px;
-      }
+    &:nth-child(2) {
+      margin-top: 0;
+      position: relative;
     }
   }
 
-  &.expanded {
-    height: auto;
+  &::after {
+    content:"";
+    position: absolute;
+    right: 0.8em;
+    top: 0.9em;
+    border: .3em solid #3694d7;
+    border-color: #3694d7 transparent transparent transparent;
+    transition: .4s all ease-in-out;
   }
+  &.expanded {
+    border: .06em solid #3694d7;
+    background: #fff;
+    border-radius: .25em;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+    max-height:15em;
 
+    label {
+      border-top: .06em solid #d9d9d9;
+      &:hover {
+        color:#3694d7;
+      }
+    }
+    input:checked + label {
+      color:#3694d7;
+    }
+
+    &::after {
+      transform: rotate(-180deg);
+      top:.55em;
+    }
+  }
 }

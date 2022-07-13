@@ -15,7 +15,7 @@ class App  {
 
       case 'photographer':
         const appPhotographer = new AppPhotographer(PhotographersData);
-        appPhotographer.CreatePhotographer();
+        appPhotographer.CreatePhotographer('');
         break;
     }
   }

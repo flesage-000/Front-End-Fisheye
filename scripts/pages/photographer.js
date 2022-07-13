@@ -8,6 +8,8 @@ class AppPhotographer {
     // HTML header
     this.$photographerHeaderWrapper = document.querySelector('.photograph__header');
     // HTML content
+    this.$mediaContentWrapper = document.querySelector('.photograph__content');
+    // HTML content articles
     this.$mediaWrapper = document.querySelector('.articles');
     // HTML cta
     this.$photographerCtaWrapper = document.querySelector('.cta');
@@ -15,7 +17,7 @@ class AppPhotographer {
     this.$lightboxWrapper = document.querySelector('#lightbox .lightbox__viewer');
   }
 
-  CreatePhotographer() {
+  CreatePhotographer(sortType) {
     const photographerID = getUrlParameter('id');
 
     // Create header
@@ -55,7 +57,6 @@ class AppPhotographer {
         return media.photographerId == photographerID
       })
       .sort(function (a, b) {
-        const sortType = 'date';
         let result = null;
         switch(sortType) {
           case 'popularity':
@@ -102,6 +103,9 @@ class AppPhotographer {
         // Likes counter
         this._likesCount += media._likes;
       });
+
+      const dropdownSorter = new DropdownSorter();
+      this.$mediaContentWrapper.insertAdjacentElement('afterbegin', dropdownSorter.CreateDropdownSorter());
 
       // Create likes counter
       const LikesCounter = new PhotographerCta(this._likesCount);
