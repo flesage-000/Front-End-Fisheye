@@ -44,7 +44,6 @@ class AppPhotographer {
         this.$modalWrapper.appendChild(
           contact.form()
         );
-        contact.init();
 
         const photographerPicture = new PhotographerHeader(photographer);
         this.$photographerHeaderWrapper.appendChild(

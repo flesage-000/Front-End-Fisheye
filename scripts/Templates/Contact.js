@@ -1,10 +1,8 @@
 class Contact {
-  constructor(data) {
-    this._data = data;
-  }
-
-  init() {
-    this.form();
+  constructor(dataPhotographer, dataContactForm) {
+    this._data = dataPhotographer;
+    this._contactFormData = dataContactForm;
+    this.eventsListeners = new eventsListeners();
   }
 
   button() {
@@ -14,8 +12,17 @@ class Contact {
 
     button.classList.add('contact_button');
     button.innerText = 'Contactez-moi';
-    button.setAttribute('onclick', 'displayModal()');
     button.setAttribute('aria-label', 'Contact Me');
+
+    this.eventsListeners.addListener(
+      function () {
+        button.addEventListener('click', function() {
+          const modal = document.querySelector('#contact_modal');
+          modal.style.display = 'block';
+        });
+      }
+    );
+    this.eventsListeners.ifListener();
 
     $wrapper.appendChild(button);
     return $wrapper
@@ -27,7 +34,7 @@ class Contact {
     const form = `
       <header>
         <h2>Contactez-moi<br><span>${this._data.name}</span></h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()">
+        <img src="assets/icons/close.svg">
       </header>
       <form novalidate>
         <fieldset>
@@ -52,8 +59,21 @@ class Contact {
       <button class="contact_submit">Envoyer</button>
     `;
 
+    console.log('this._contactFormData', this._contactFormData);
+
     $wrapper.innerHTML = form;
     $wrapper.classList.add('modal__content');
+
+    this.eventsListeners.addListener(
+      function () {
+        const closeButton = $wrapper.querySelector('header img');
+        closeButton.addEventListener('click', function() {
+          const modal = document.querySelector('#contact_modal');
+          modal.style.display = 'none';
+        });
+      }
+    );
+    this.eventsListeners.ifListener();
 
     return $wrapper
   }

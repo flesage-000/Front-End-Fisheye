@@ -14,7 +14,8 @@ class App  {
         break;
 
       case 'photographer':
-        const appPhotographer = new AppPhotographer(PhotographersData);
+        const ContactFormData = await this.photographerApi.getContactFormParam();
+        const appPhotographer = new AppPhotographer(PhotographersData, ContactFormData);
         appPhotographer.CreatePhotographer('');
         break;
     }

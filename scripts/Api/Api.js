@@ -1,10 +1,11 @@
 class Api  {
   constructor() {
-    this._url = 'https://flesage-000.github.io/Front-End-Fisheye/data/photographers.json';
+    this._urlPhotographer = 'https://flesage-000.github.io/Front-End-Fisheye/data/photographers.json';
+    this._urlContactForm = 'https://flesage-000.github.io/Front-End-Fisheye//data/contactFormData.json';
   }
 
-  async get() {
-    return fetch(this._url)
+  async get(url) {
+    return fetch(url)
             .then(res => res.json())
             .catch(error => console.log('an error occurs', error));
   }
@@ -19,6 +20,10 @@ class PhotographerApi extends Api {
   }
 
   async getPhotographers() {
-    return await this.get();
+    return await this.get(this._urlPhotographer);
+  }
+
+  async getContactFormParam() {
+    return await this.get(this._urlContactForm);
   }
 }
