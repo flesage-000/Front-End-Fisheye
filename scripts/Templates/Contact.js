@@ -30,39 +30,27 @@ class Contact {
 
   form() {
     const $wrapper = document.createElement('div');
-    const emailRegex = "^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+    const fieldset = document.createElement('fieldset');
     const form = `
       <header>
         <h2>Contactez-moi<br><span>${this._data.name}</span></h2>
         <img src="assets/icons/close.svg">
       </header>
-      <form novalidate>
-        <fieldset>
-          <div>
-            <label for="contact_lastname">Prénom</label>
-            <input type="text" id="contact_lastname" placeholder="Prénom" minlength="2">
-          </div>
-          <div>
-            <label for="contact_firstname">Nom</label>
-            <input type="text" id="contact_firstname" placeholder="Nom" minlength="2">
-          </div>
-          <div>
-            <label for="contact_email">Email</label>
-            <input type="email" id="contact_email" placeholder="Email" pattern="${emailRegex}">
-          </div>
-          <div>
-            <label for="contact_email">Votre message</label>
-            <textarea id="contact_email" placeholder="Votre message"></textarea>
-          </div>
-        </fieldset>
-      </form>
+      <form novalidate></form>
       <button class="contact_submit">Envoyer</button>
     `;
 
-    console.log('this._contactFormData', this._contactFormData);
+    this._contactFormData.forEach(input => {
+      const _inputBuilder = new inputBuilder(input);
+      const $wrapper = _inputBuilder.init();
+      console.log('$wrapper', $wrapper)
+      fieldset.appendChild($wrapper);
+    });
 
     $wrapper.innerHTML = form;
     $wrapper.classList.add('modal__content');
+
+    $wrapper.querySelector('form').appendChild(fieldset);
 
     this.eventsListeners.addListener(
       function () {
@@ -77,6 +65,4 @@ class Contact {
 
     return $wrapper
   }
-
-  thanks() {}
 }

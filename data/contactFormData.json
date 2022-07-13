@@ -7,7 +7,7 @@
       "placeholder": "Prénom",
       "validation": [
         {
-          "required": true,
+          "required": "required",
           "minlength": 2
         }
       ]
@@ -19,7 +19,7 @@
       "placeholder": "Nom",
       "validation": [
         {
-          "required": true,
+          "required": "required",
           "minlength": 2
         }
       ]
@@ -31,7 +31,7 @@
       "placeholder": "Email",
       "validation": [
         {
-          "required": true,
+          "required": "required",
           "pattern": "^[a-zA-Z0-9.!#$%&amp;\u2019*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
         }
       ]
@@ -43,10 +43,15 @@
       "placeholder": "Votre message",
       "validation": [
         {
-          "required": true,
+          "required": "required",
           "minlength": 2
         }
       ]
+    },
+    {
+      "class": "contact_submit",
+      "label": "Envoyer",
+      "type": "button"
     }
   ]
 }
