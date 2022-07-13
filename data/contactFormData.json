@@ -1,0 +1,52 @@
+{
+  "contact": [
+    {
+      "id": "lastname",
+      "label": "Prénom",
+      "type": "text",
+      "placeholder": "Prénom",
+      "validation": [
+        {
+          "required": true,
+          "minlength": 2
+        }
+      ]
+    },
+    {
+      "id": "firstname",
+      "label": "Nom",
+      "type": "text",
+      "placeholder": "Nom",
+      "validation": [
+        {
+          "required": true,
+          "minlength": 2
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "type": "email",
+      "placeholder": "Email",
+      "validation": [
+        {
+          "required": true,
+          "pattern": "^[a-zA-Z0-9.!#$%&amp;\u2019*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
+        }
+      ]
+    },
+    {
+      "id": "message",
+      "label": "Votre message",
+      "type": "textarea",
+      "placeholder": "Votre message",
+      "validation": [
+        {
+          "required": true,
+          "minlength": 2
+        }
+      ]
+    }
+  ]
+}
