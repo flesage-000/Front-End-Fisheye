@@ -47,11 +47,6 @@
           "minlength": 2
         }
       ]
-    },
-    {
-      "class": "contact_submit",
-      "label": "Envoyer",
-      "type": "button"
     }
   ]
 }
