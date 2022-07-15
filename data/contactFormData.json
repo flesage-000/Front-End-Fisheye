@@ -9,7 +9,12 @@
         {
           "listenerType": "change",
           "required": "required",
-          "minlength": 2
+          "message": "Veuillez remplir le champs 'Prénom'."
+        },
+        {
+          "listenerType": "change",
+          "minlength": 2,
+          "message": "Veuillez remplir le champs avec deux caractères au minimum."
         }
       ]
     },
@@ -22,7 +27,12 @@
         {
           "listenerType": "change",
           "required": "required",
-          "minlength": 2
+          "message": "Veuillez remplir le champs 'Nom'."
+        },
+        {
+          "listenerType": "change",
+          "minlength": 2,
+          "message": "Veuillez remplir le champs avec deux caractères au minimum."
         }
       ]
     },
@@ -35,7 +45,12 @@
         {
           "listenerType": "change",
           "required": "required",
-          "pattern": "^[a-zA-Z0-9.!#$%&amp;\u2019*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
+          "message": "Veuillez remplir le champs 'Email'."
+        },
+        {
+          "listenerType": "change",
+          "pattern": "^[a-zA-Z0-9.!#$%&amp;\u2019*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$",
+          "message": "Veuillez entrer une adresse email valide."
         }
       ]
     },
@@ -48,7 +63,12 @@
         {
           "listenerType": "change",
           "required": "required",
-          "minlength": 2
+          "message": "Veuillez remplir le champs 'Message'."
+        },
+        {
+          "listenerType": "change",
+          "minlength": 2,
+          "message": "Le message doit comporter deux caractères minimum."
         }
       ]
     }
