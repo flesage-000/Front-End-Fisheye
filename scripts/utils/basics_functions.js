@@ -1,15 +1,4 @@
 /**
- * To replace space by '%20'.
- * @param {string} string
- * @returns string
- */
-function replaceSpace(string) {
-  string = string.trim();
-  string = string.replace(' ', '%20');
-  return string;
-}
-
-/**
  * To get url parameter value
  * @param {string} parameter
  * @returns string
@@ -27,12 +16,4 @@ function getUrlParameter(parameter) {
     }
   }
   return false;
-}
-
-/**
- * Return url pathname
- * @returns string
- */
-function getWindowPathName() {// console.log('window.location.pathname', window.location.pathname);
-  return window.location.pathname
 }
