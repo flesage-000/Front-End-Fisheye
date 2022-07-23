@@ -1,8 +1,19 @@
+/**
+ * Template of cta part like's total and photographer price
+ */
 class PhotographerCta {
+  /**
+   *
+   * @param {object} data Photographer JSON data
+   */
   constructor(data) {
     this._data = data;
   }
 
+  /**
+   *
+   * @returns HTML node
+   */
   createPhotographerCta() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('cta__counter');
@@ -18,6 +29,10 @@ class PhotographerCta {
     return $wrapper
   }
 
+  /**
+   *
+   * @returns HTML node
+   */
   createPhotographerPrice() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('cta__price');
