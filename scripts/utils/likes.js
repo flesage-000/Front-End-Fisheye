@@ -1,6 +1,10 @@
 class Likes {
   constructor() {}
 
+  /**
+   * To increase like counters
+   * @param {object} event An event
+   */
   increase(event) {
     // Increase media's likes counter
     const mediaLikesContainer = event.target.parentNode;
