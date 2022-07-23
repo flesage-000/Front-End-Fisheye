@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
+  justify-items: center;
   &__media {
     display: flex;
     flex-wrap: wrap;
