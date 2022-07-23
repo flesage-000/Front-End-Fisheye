@@ -1,4 +1,11 @@
+/**
+ * Init for index page
+ */
 class AppIndex {
+  /**
+   *
+   * @param {object} indexData JSON data
+   */
   constructor(indexData) {
     this._indexData = indexData;
 
