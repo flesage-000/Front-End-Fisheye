@@ -1,11 +1,16 @@
+/**
+ * Manage dropdown sorter
+ */
 class DropdownSorter {
   constructor() {
     this.AppPhotographer = new AppPhotographer();
-    // this._AppPhotographer = new AppPhotographer(PhotographersData);
   }
 
+  /**
+   * Generate dropdown HTML node
+   * @returns HTML node
+   */
   CreateDropdownSorter() {
-    // const DropdownContainer = document.querySelector('.photograph__content');
     const $wrapper = document.createElement('div');
     const dropdown = `
       <input type="radio" name="sortType" value="popularity" checked="checked" id="sort-popularity">
@@ -25,8 +30,11 @@ class DropdownSorter {
     return $wrapper
   }
 
+  /**
+   *  Add listener to dropdown
+   * @param {object} element The dropdown HTML node
+   */
   Init(element) {
-    console.log('Init', element);
     element.addEventListener('click', function(event) {
       event.preventDefault();
       event.stopPropagation();
@@ -40,15 +48,10 @@ class DropdownSorter {
         this.classList.toggle('expanded');
         input.checked = true;
 
-        console.log('this._AppPhotographer', AppPhotographer);
-
         const appPhotographer = new AppPhotographer(this._PhotographersData);
         appPhotographer.CreatePhotographer(inputValue);
-
-        console.log('IF', input, inputValue);
       } else { // Open the sorter
         this.classList.toggle('expanded');
-        console.log('DONT contains', event.target, event.target.checked);
       }
     });
   }
