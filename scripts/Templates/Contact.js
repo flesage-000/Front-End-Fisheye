@@ -30,28 +30,224 @@ class Contact {
 
   form() {
     const $wrapper = document.createElement('div');
-    const fieldset = document.createElement('fieldset');
     const form = `
       <header>
         <h2>Contactez-moi<br><span>${this._data.name}</span></h2>
         <img src="assets/icons/close.svg">
       </header>
-      <form novalidate></form>
-      <button class="contact_submit">Envoyer</button>
+      <form novalidate>
+        <fieldset>
+          <div>
+            <label for="contact_lastname">Prénom</label>
+            <input type="text" id="contact_lastname" placeholder="Prénom" />
+          </div>
+          <div>
+            <label for="contact_firstname">Nom</label>
+            <input type="text" id="contact_firstname" placeholder="Nom" />
+          </div>
+          <div>
+            <label for="contact_email">Email</label>
+            <input type="text" id="contact_email" placeholder="Email" />
+          </div>
+          <div>
+            <label for="contact_message">Votre message</label>
+            <textarea id="contact_message" placeholder="Votre message"></textarea>
+          </div>
+        </fieldset>
+        <button class="contact_submit" type="submit">Envoyer</button>
+      </form>
     `;
-
-    this._contactFormData.forEach(input => {
-      const _inputBuilder = new inputBuilder(input);
-      const $wrapper = _inputBuilder.init();
-      console.log('$wrapper', $wrapper)
-      fieldset.appendChild($wrapper);
-    });
 
     $wrapper.innerHTML = form;
     $wrapper.classList.add('modal__content');
 
-    $wrapper.querySelector('form').appendChild(fieldset);
+    // message minlenght
+    this.eventsListeners.addListener(
+      function () {
+        const message = $wrapper.querySelector('#contact_message');
+        message.addEventListener('change', event => {
+          const _formValidator = new formValidator();
 
+          const minLengthValue = 2;
+          const minLengthIsValid = _formValidator.minLength(event.target.value, minLengthValue);
+          const validationType = 'minlength';
+          const validationMessage = `${minLengthValue} caractères minimum.`
+
+          _formValidator.errorManager(event.target, minLengthIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // message required
+    this.eventsListeners.addListener(
+      function () {
+        const message = $wrapper.querySelector('#contact_message');
+        message.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const requiredIsValid = _formValidator.required(event.target.value);
+          const validationType = 'required';
+          const validationMessage = 'Veuillez complèter le champs.'
+
+          _formValidator.errorManager(event.target, requiredIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Email input email format
+    this.eventsListeners.addListener(
+      function () {
+        const email = $wrapper.querySelector('#contact_email');
+        email.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const requiredIsValid = _formValidator.emailFormat(event.target.value);
+          const validationType = 'email';
+          const validationMessage = 'Veuillez entrer une adresse email valide.'
+
+          _formValidator.errorManager(event.target, requiredIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Email input required
+    this.eventsListeners.addListener(
+      function () {
+        const email = $wrapper.querySelector('#contact_email');
+        email.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const requiredIsValid = _formValidator.required(event.target.value);
+          const validationType = 'required';
+          const validationMessage = 'Veuillez complèter le champs.'
+
+          _formValidator.errorManager(event.target, requiredIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Firstname input minlenght
+    this.eventsListeners.addListener(
+      function () {
+        const firstName = $wrapper.querySelector('#contact_firstname');
+        firstName.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const minLengthValue = 2;
+          const minLengthIsValid = _formValidator.minLength(event.target.value, minLengthValue);
+          const validationType = 'minlength';
+          const validationMessage = `${minLengthValue} caractères minimum.`
+
+          _formValidator.errorManager(event.target, minLengthIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Firstname input required
+    this.eventsListeners.addListener(
+      function () {
+        const firstName = $wrapper.querySelector('#contact_firstname');
+        firstName.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const requiredIsValid = _formValidator.required(event.target.value);
+          const validationType = 'required';
+          const validationMessage = 'Veuillez complèter le champs.'
+
+          _formValidator.errorManager(event.target, requiredIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Lastname input minlenght
+    this.eventsListeners.addListener(
+      function () {
+        const lastName = $wrapper.querySelector('#contact_lastname');
+        lastName.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const minLengthValue = 2;
+          const minLengthIsValid = _formValidator.minLength(event.target.value, minLengthValue);
+          const validationType = 'minlength';
+          const validationMessage = `${minLengthValue} caractères minimum.`
+
+          _formValidator.errorManager(event.target, minLengthIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // Lastname input required
+    this.eventsListeners.addListener(
+      function () {
+        const lastName = $wrapper.querySelector('#contact_lastname');
+        lastName.addEventListener('change', event => {
+          const _formValidator = new formValidator();
+
+          const requiredIsValid = _formValidator.required(event.target.value);
+          const validationType = 'required';
+          const validationMessage = 'Veuillez complèter le champs.'
+
+          _formValidator.errorManager(event.target, requiredIsValid, validationType, validationMessage);
+        });
+      }
+    );
+
+    // form submit
+    this.eventsListeners.addListener(
+      function() {
+        const form = $wrapper.querySelector('form');
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+
+          const _formValidator = new formValidator();
+
+          // Lastname
+          const lastNameNode = form.querySelector('#contact_lastname');
+          const lastNameValue = _formValidator.required(lastNameNode.value);
+
+          const lastNameRequiredErrorMessage = 'Veuillez compléter le champs.';
+          _formValidator.errorManager(lastNameNode, lastNameValue, 'required', lastNameRequiredErrorMessage);
+
+          const lastNameMinLength = 2;
+          const lastNameMinErrorMessage = `${lastNameMinLength} caractères minimum.`;
+          _formValidator.errorManager(lastNameNode, lastNameValue, 'minlength', lastNameMinErrorMessage);
+
+          // Firstname
+          const firstNameNode = form.querySelector('#contact_firstname');
+          const firstNameValue = _formValidator.required(firstNameNode.value);
+
+          const firstNameRequiredErrorMessage = 'Veuillez compléter le champs.';
+          _formValidator.errorManager(firstNameNode, firstNameValue, 'required', firstNameRequiredErrorMessage);
+
+          const firstNameMinLength = 2;
+          const firstNameMinLengthErrorMessage = `${firstNameMinLength} caractères minimum.`;
+          _formValidator.errorManager(firstNameNode, firstNameValue, 'minlength', firstNameMinLengthErrorMessage);
+
+          // Email
+          const emailNode = form.querySelector('#contact_email');
+          const emailValue = _formValidator.required(emailNode.value);
+
+          const emailRequiredErrorMessage = 'Veuillez compléter le champs.';
+          _formValidator.errorManager(emailNode, emailValue, 'required', emailRequiredErrorMessage);
+
+          const emailValidErrorMessage = `Veuillez entrer un email valide.`;
+          _formValidator.errorManager(emailNode, emailValue, 'email', emailValidErrorMessage);
+
+          // Message
+          const messageNode = form.querySelector('#contact_message');
+          const messageValue = _formValidator.required(messageNode.value);
+
+          const messageRequiredErrorMessage = 'Veuillez compléter le champs.';
+          _formValidator.errorManager(messageNode, messageValue, 'required', messageRequiredErrorMessage);
+
+          const messageMinLength = 2;
+          const messageMinErrorMessage = `${messageMinLength} caractères minimum.`;
+          _formValidator.errorManager(messageNode, messageValue, 'minlength', messageMinErrorMessage);
+        });
+      }
+    );
+
+    // Close button
     this.eventsListeners.addListener(
       function () {
         const closeButton = $wrapper.querySelector('header img');
@@ -64,5 +260,9 @@ class Contact {
     this.eventsListeners.ifListener();
 
     return $wrapper
+  }
+
+  validateRequired(value) {
+    console.log('validateRequired', value);
   }
 }
