@@ -1,7 +1,10 @@
 class Contact {
-  constructor(dataPhotographer, dataContactForm) {
+  /**
+   *
+   * @param {object} dataPhotographer photographer JSON data
+   */
+  constructor(dataPhotographer) {
     this._data = dataPhotographer;
-    this._contactFormData = dataContactForm;
     this.eventsListeners = new eventsListeners();
   }
 
