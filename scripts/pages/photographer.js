@@ -1,4 +1,8 @@
 class AppPhotographer {
+  /**
+   *
+   * @param {object} photographerData photographer JSON data
+   */
   constructor(photographerData) {
     this._photographerData = photographerData;
 
