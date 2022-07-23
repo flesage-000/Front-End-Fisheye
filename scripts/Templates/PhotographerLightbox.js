@@ -64,13 +64,13 @@ class PhotographerLightbox {
       window.addEventListener('keydown', function(event) {
         event.preventDefault();
         let action = null;
-        const eventWhich = event.which;
-        console.log('keyress', typeof eventWhich, eventWhich);
-        if (eventWhich === 37) {
+        const eventCode = event.code;
+
+        if (eventCode === 'ArrowLeft') {
           action = 'forward';
-        } else if (eventWhich === 39) {
+        } else if (eventCode === 'ArrowRight') {
           action = 'next';
-        } else if (eventWhich === 27) {
+        } else if (eventCode === 'Escape') {
           action = 'close';
         }
 
