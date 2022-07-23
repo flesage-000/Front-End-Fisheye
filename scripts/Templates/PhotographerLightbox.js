@@ -1,9 +1,21 @@
+/**
+ * Manage medias lightbox
+ */
 class PhotographerLightbox {
+  /**
+   *
+   * @param {object} data Media JSON data
+   */
   constructor(data) {
     this._data = data;
     this.eventsListeners = new eventsListeners();
   }
 
+  /**
+   * Template for media image
+   * @param {number} index
+   * @returns HTML node
+   */
   createImageLightbox(index) {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('lightbox__viewer__media');
@@ -17,6 +29,11 @@ class PhotographerLightbox {
     return $wrapper
   }
 
+  /**
+   * Template for media video
+   * @param {number} index
+   * @returns HTML node
+   */
   createVideoLightbox(index) {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('lightbox__viewer__media');
@@ -34,6 +51,9 @@ class PhotographerLightbox {
     return $wrapper
   }
 
+  /**
+   * Add eventlistener for lightbox
+   */
   lightbox() {
     const lightbox = document.querySelector('#lightbox');
     const lightboxButtons = lightbox.querySelectorAll('a');
@@ -91,6 +111,11 @@ class PhotographerLightbox {
 
   }
 
+  /**
+   * Manage user event on lightbox
+   * @param {object} lightbox Lightbox HTML node
+   * @param {string} action The user action on lightbox (next, prev, close)
+   */
   ManageNextPrevLightbox(lightbox, action) {
     const allMedia = lightbox.querySelectorAll('.lightbox__viewer__media');
     const allMediaLength = allMedia.length;
