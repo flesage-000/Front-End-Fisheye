@@ -8,6 +8,10 @@ class Contact {
     this.eventsListeners = new eventsListeners();
   }
 
+  /**
+   * Create contact button
+   * @returns HTML button node
+   */
   button() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph__header__contact');
@@ -31,6 +35,10 @@ class Contact {
     return $wrapper
   }
 
+  /**
+   * Create contact form with form validations
+   * @returns HTML contact node
+   */
   form() {
     const $wrapper = document.createElement('div');
     const form = `
@@ -270,9 +278,5 @@ class Contact {
     this.eventsListeners.ifListener();
 
     return $wrapper
-  }
-
-  validateRequired(value) {
-    console.log('validateRequired', value);
   }
 }
