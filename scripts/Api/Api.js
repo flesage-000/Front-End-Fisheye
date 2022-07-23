@@ -1,9 +1,16 @@
+/**
+ * To load JSON data
+ */
 class Api  {
   constructor() {
     this._urlPhotographer = 'https://flesage-000.github.io/Front-End-Fisheye/data/photographers.json';
-    this._urlContactForm = 'https://flesage-000.github.io/Front-End-Fisheye//data/contactFormData.json';
   }
 
+  /**
+   * Load JSON data
+   * @param {string} url The URL of JSON
+   * @returns JSON data
+   */
   async get(url) {
     return fetch(url)
             .then(res => res.json())
@@ -18,12 +25,7 @@ class PhotographerApi extends Api {
   constructor(url) {
     super(url);
   }
-
   async getPhotographers() {
     return await this.get(this._urlPhotographer);
-  }
-
-  async getContactFormParam() {
-    return await this.get(this._urlContactForm);
   }
 }

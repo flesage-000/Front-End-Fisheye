@@ -1,4 +1,8 @@
 class App  {
+  /**
+   *
+   * @param {string} page The page subject
+   */
   constructor(page) {
     this.photographerApi = new PhotographerApi();
     this._page = page;
@@ -14,8 +18,7 @@ class App  {
         break;
 
       case 'photographer':
-        const ContactFormData = await this.photographerApi.getContactFormParam();
-        const appPhotographer = new AppPhotographer(PhotographersData, ContactFormData);
+        const appPhotographer = new AppPhotographer(PhotographersData);
         appPhotographer.CreatePhotographer('');
         break;
     }
