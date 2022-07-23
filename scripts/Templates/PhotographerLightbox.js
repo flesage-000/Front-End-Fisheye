@@ -59,6 +59,36 @@ class PhotographerLightbox {
         })
       );
     });
+
+    this.eventsListeners.addListener(
+      window.addEventListener('keydown', function(event) {
+        event.preventDefault();
+        let action = null;
+        const eventWhich = event.which;
+        console.log('keyress', typeof eventWhich, eventWhich);
+        if (eventWhich === 37) {
+          action = 'forward';
+        } else if (eventWhich === 39) {
+          action = 'next';
+        } else if (eventWhich === 27) {
+          action = 'close';
+        }
+
+        switch(action) {
+          case 'next':
+          case 'forward':
+            const Navlightbox = new PhotographerLightbox();
+            Navlightbox.ManageNextPrevLightbox(lightbox, action);
+            break;
+          case 'close':
+            lightbox.classList.add('close');
+            // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
+            lightbox.querySelector('.lightbox__viewer__media[style^="display"]').style.display = null;
+            break;
+        }
+      })
+    );
+
   }
 
   ManageNextPrevLightbox(lightbox, action) {
