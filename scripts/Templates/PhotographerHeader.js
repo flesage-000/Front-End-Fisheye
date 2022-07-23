@@ -1,8 +1,19 @@
+/**
+ * Generate Photograph header
+ */
 class PhotographerHeader {
+  /**
+   *
+   * @param {object} data Photographer JSON data
+   */
   constructor(data) {
     this._data = data;
   }
 
+  /**
+   * Create photographer header card
+   * @returns HTML node
+   */
   createPhotographerHeaderCard() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph__header__card');
@@ -22,6 +33,10 @@ class PhotographerHeader {
     return $wrapper
   }
 
+  /**
+   * Create photographer profil picture
+   * @returns HTML node
+   */
   createPhotographerHeaderPicture() {
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph__header__picture');
