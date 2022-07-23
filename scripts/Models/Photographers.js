@@ -1,4 +1,8 @@
 class Photographers {
+  /**
+   *
+   * @param {object} data Phtographer JSON data
+   */
   constructor(data) {
     this._name = data.name;
     this._id = data.id;
