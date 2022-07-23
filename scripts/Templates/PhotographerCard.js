@@ -1,8 +1,19 @@
+/**
+ * Template of hotographer cards
+ */
 class PhotographerCard {
+  /**
+   *
+   * @param {object} photographer Photographer JSON data
+   */
   constructor(photographer) {
     this._photographer = photographer;
   }
 
+  /**
+   *
+   * @returns HTML node
+   */
   createPhotographerCard() {
     const $wrapper = document.createElement('article');
 
