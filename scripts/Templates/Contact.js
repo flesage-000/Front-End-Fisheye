@@ -203,14 +203,15 @@ class Contact {
 
           // Lastname
           const lastNameNode = form.querySelector('#contact_lastname');
-          const lastNameValue = _formValidator.required(lastNameNode.value);
+          const lastNameValueIsValid = _formValidator.required(lastNameNode.value);
 
           const lastNameRequiredErrorMessage = 'Veuillez compléter le champs.';
-          _formValidator.errorManager(lastNameNode, lastNameValue, 'required', lastNameRequiredErrorMessage);
+          _formValidator.errorManager(lastNameNode, lastNameValueIsValid, 'required', lastNameRequiredErrorMessage);
 
           const lastNameMinLength = 2;
+          const lastNameMinLengthIsValid = _formValidator.minLength(lastNameNode.value, lastNameMinLength);
           const lastNameMinErrorMessage = `${lastNameMinLength} caractères minimum.`;
-          _formValidator.errorManager(lastNameNode, lastNameValue, 'minlength', lastNameMinErrorMessage);
+          _formValidator.errorManager(lastNameNode, lastNameMinLengthIsValid, 'minlength', lastNameMinErrorMessage);
 
           // Firstname
           const firstNameNode = form.querySelector('#contact_firstname');
@@ -220,8 +221,9 @@ class Contact {
           _formValidator.errorManager(firstNameNode, firstNameValue, 'required', firstNameRequiredErrorMessage);
 
           const firstNameMinLength = 2;
+          const firstNameMinLengthIsValid = _formValidator.minLength(firstNameNode.value, firstNameMinLength);
           const firstNameMinLengthErrorMessage = `${firstNameMinLength} caractères minimum.`;
-          _formValidator.errorManager(firstNameNode, firstNameValue, 'minlength', firstNameMinLengthErrorMessage);
+          _formValidator.errorManager(firstNameNode, firstNameMinLengthIsValid, 'minlength', firstNameMinLengthErrorMessage);
 
           // Email
           const emailNode = form.querySelector('#contact_email');
@@ -241,8 +243,13 @@ class Contact {
           _formValidator.errorManager(messageNode, messageValue, 'required', messageRequiredErrorMessage);
 
           const messageMinLength = 2;
+          const messageMinLengthIsValid = _formValidator.minLength(messageNode.value, messageMinLength);
           const messageMinErrorMessage = `${messageMinLength} caractères minimum.`;
-          _formValidator.errorManager(messageNode, messageValue, 'minlength', messageMinErrorMessage);
+          _formValidator.errorManager(messageNode, messageMinLengthIsValid, 'minlength', messageMinErrorMessage);
+
+          if (lastNameValueIsValid && lastNameMinLengthIsValid) {
+
+          }
         });
       }
     );

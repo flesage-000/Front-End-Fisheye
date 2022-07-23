@@ -59,12 +59,15 @@ class formValidator {
   errorManager(element, elementIsValid, validationType, validationMessage) {
     const parent = element.parentNode;
     const hasError = parent.querySelector('.' + validationType);
-console.log('hasError', parent, hasError, '.' + validationType);
+
     if (elementIsValid) {
       const errorElement = parent.querySelector('.' + validationType);
+
       if (errorElement) errorElement.remove();
+
     } else if (!elementIsValid && !hasError) {
       const $wrapper = document.createElement('span');
+
       $wrapper.classList.add(validationType);
       $wrapper.innerText = validationMessage;
 
