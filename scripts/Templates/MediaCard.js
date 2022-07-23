@@ -1,4 +1,8 @@
 class MediaCard {
+  /**
+   *
+   * @param {object} media photographer JSON data
+   */
   constructor(media) {
     this._media = media;
 
@@ -6,6 +10,11 @@ class MediaCard {
     this._contact = new Contact();
   }
 
+  /**
+   *  Create media card HTML node for media image
+   * @param {number} index The media index number
+   * @returns
+   */
   createImageCard(index) {
     const $wrapper = document.createElement('article');
     const mediaCard = `
@@ -28,6 +37,11 @@ class MediaCard {
     return $wrapper
   }
 
+  /**
+   *  Create media card HTML node for media video
+   * @param {number} index The media index number
+   * @returns
+   */
   createVideoCard(index) {
     const $wrapper = document.createElement('article');
     const mediaCard = `
@@ -53,8 +67,12 @@ class MediaCard {
     return $wrapper
   }
 
-  // Because some events are availables for both media types (image and video)
+  /**
+   * Add like click events
+   * @param {object} $wrapper
+   */
   commonEvents($wrapper) {
+
     // Manage likes
     this.eventsListeners.addListener(
       function() {
