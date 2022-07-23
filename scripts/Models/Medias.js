@@ -1,4 +1,8 @@
 class Medias {
+  /**
+   *
+   * @param {object} data Photographer JSON data
+   */
   constructor(data) {
     this._id = data.id;
     this._photographerID = data.photographerId;
