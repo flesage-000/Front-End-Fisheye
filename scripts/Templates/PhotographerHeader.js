@@ -15,8 +15,8 @@ class PhotographerHeader {
    * @returns HTML node
    */
   createPhotographerHeaderCard() {
-    const $wrapper = document.createElement('div');
-    $wrapper.classList.add('photograph__header__card');
+    const $wrapper = document.createElement("div");
+    $wrapper.classList.add("photograph__header__card");
 
     const photographerCard = `
       <h1 class="name">${this._data.name}</h1>
@@ -30,7 +30,7 @@ class PhotographerHeader {
 
     $wrapper.innerHTML = photographerCard;
 
-    return $wrapper
+    return $wrapper;
   }
 
   /**
@@ -38,8 +38,8 @@ class PhotographerHeader {
    * @returns HTML node
    */
   createPhotographerHeaderPicture() {
-    const $wrapper = document.createElement('div');
-    $wrapper.classList.add('photograph__header__picture');
+    const $wrapper = document.createElement("div");
+    $wrapper.classList.add("photograph__header__picture");
 
     const photographerPicture = `
       <img src="${this._data.portrait}" alt="${this._data.name}">
@@ -47,6 +47,6 @@ class PhotographerHeader {
 
     $wrapper.innerHTML = photographerPicture;
 
-    return $wrapper
+    return $wrapper;
   }
 }

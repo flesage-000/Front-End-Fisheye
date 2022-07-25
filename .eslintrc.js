@@ -6,7 +6,8 @@ module.exports = {
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-      "ecmaVersion": "latest"
+      "ecmaVersion": "latest",
+      "no-case-declarations": "error"
   },
   "rules": {
       "no-console": "off",
@@ -15,4 +16,4 @@ module.exports = {
       "quotes": ["error", "double"],
       "no-undef":"off"
   }
-}
+};

@@ -16,7 +16,7 @@ class MediaCard {
    * @returns
    */
   createImageCard(index) {
-    const $wrapper = document.createElement('article');
+    const $wrapper = document.createElement("article");
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><img src="${this._media.image}" class="articles__media__img" title="${this._media.title}, close up view"></a>
       <span class="articles__media__name">${this._media.title}</span>
@@ -27,14 +27,14 @@ class MediaCard {
     `;
 
     $wrapper.innerHTML = mediaCard;
-    $wrapper.classList.add('articles__media');
-    $wrapper.setAttribute('data-index', index);
+    $wrapper.classList.add("articles__media");
+    $wrapper.setAttribute("data-index", index);
 
     // Add listeners
     this.commonEvents($wrapper);
     this.eventsListeners.ifListener();
 
-    return $wrapper
+    return $wrapper;
   }
 
   /**
@@ -43,11 +43,11 @@ class MediaCard {
    * @returns
    */
   createVideoCard(index) {
-    const $wrapper = document.createElement('article');
+    const $wrapper = document.createElement("article");
     const mediaCard = `
       <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><video class="articles__media__img">
         <source src="${this._media.video}" type="video/mp4">
-        Sorry, your browser doesn't support embedded videos.
+        Sorry, your browser doesn"t support embedded videos.
       </video></a>
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
@@ -57,14 +57,14 @@ class MediaCard {
     `;
 
     $wrapper.innerHTML = mediaCard;
-    $wrapper.classList.add('articles__media');
-    $wrapper.setAttribute('data-index', index);
+    $wrapper.classList.add("articles__media");
+    $wrapper.setAttribute("data-index", index);
 
     // Add listeners
     this.commonEvents($wrapper);
     this.eventsListeners.ifListener();
 
-    return $wrapper
+    return $wrapper;
   }
 
   /**
@@ -76,13 +76,13 @@ class MediaCard {
     // Manage likes
     this.eventsListeners.addListener(
       function() {
-        const element = $wrapper.querySelector('.articles__media__like__heart');
+        const element = $wrapper.querySelector(".articles__media__like__heart");
 
-        element.addEventListener('click', function(event) {
+        element.addEventListener("click", function(event) {
           event.preventDefault();
 
-          const likes = new Likes()
-          likes.increase(event)
+          const likes = new Likes();
+          likes.increase(event);
         });
       }
     );
@@ -90,17 +90,17 @@ class MediaCard {
     // Manage lightbox open
     this.eventsListeners.addListener(
       function() {
-        const element = $wrapper.querySelector('.lightboxOpener');
+        const element = $wrapper.querySelector(".lightboxOpener");
 
-        element.addEventListener('click', function(event) {
+        element.addEventListener("click", function(event) {
           event.preventDefault();
 
-          const articlesContainer = event.target.closest('.articles__media');
+          const articlesContainer = event.target.closest(".articles__media");
           const index = articlesContainer.dataset.index;
-          const lightboxContainer = document.querySelector('#lightbox');
+          const lightboxContainer = document.querySelector("#lightbox");
 
-          lightboxContainer.querySelector('[data-index="' + index + '"]').style.display = 'flex';
-          lightboxContainer.classList.remove('close');
+          lightboxContainer.querySelector("[data-index=\"" + index + "\"]").style.display = "flex";
+          lightboxContainer.classList.remove("close");
         });
       }
     );

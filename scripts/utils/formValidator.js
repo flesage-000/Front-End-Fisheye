@@ -15,7 +15,7 @@ class formValidator {
 
     if (valueLength >= 1) isValid = true;
 
-    return isValid
+    return isValid;
   }
 
   /**
@@ -33,24 +33,24 @@ class formValidator {
 
     if (valueLength >= minLengthValue) isValid = true;
 
-    return isValid
+    return isValid;
   }
 
   emailFormat(value) {
     // Remove useless white space
     value = value.trim();
 
-    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const emailRegex = new RegExp(regex);
     let isValid = false;
 
     isValid = emailRegex.test(value);
 
-    return isValid
+    return isValid;
   }
 
   /**
-   * Display or remove error message according 'elementIsValid'.
+   * Display or remove error message according "elementIsValid".
    * @param {object} element
    * @param {boolean} elementIsValid
    * @param {string} validationType
@@ -58,15 +58,15 @@ class formValidator {
    */
   errorManager(element, elementIsValid, validationType, validationMessage) {
     const parent = element.parentNode;
-    const hasError = parent.querySelector('.' + validationType);
+    const hasError = parent.querySelector("." + validationType);
 
     if (elementIsValid) {
-      const errorElement = parent.querySelector('.' + validationType);
+      const errorElement = parent.querySelector("." + validationType);
 
       if (errorElement) errorElement.remove();
 
     } else if (!elementIsValid && !hasError) {
-      const $wrapper = document.createElement('span');
+      const $wrapper = document.createElement("span");
 
       $wrapper.classList.add(validationType);
       $wrapper.innerText = validationMessage;

@@ -12,15 +12,16 @@ class App  {
     const PhotographersData = await this.photographerApi.getPhotographers();
 
     switch(this._page) {
-      case 'index':
+      case "index": {
         const appIndex = new AppIndex(PhotographersData);
         appIndex.CreateIndex();
         break;
-
-      case 'photographer':
+      }
+      case "photographer": {
         const appPhotographer = new AppPhotographer(PhotographersData);
-        appPhotographer.CreatePhotographer('');
+        appPhotographer.CreatePhotographer("");
         break;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
  */
 class Api  {
   constructor() {
-    this._urlPhotographer = 'https://flesage-000.github.io/Front-End-Fisheye/data/photographers.json';
+    this._urlPhotographer = "https://flesage-000.github.io/Front-End-Fisheye/data/photographers.json";
   }
 
   /**
@@ -14,7 +14,7 @@ class Api  {
   async get(url) {
     return fetch(url)
             .then(res => res.json())
-            .catch(error => console.log('an error occurs', error));
+            .catch(error => console.log("an error occurs", error));
   }
 }
 

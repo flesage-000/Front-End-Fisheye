@@ -15,7 +15,7 @@ class PhotographerCard {
    * @returns HTML node
    */
   createPhotographerCard() {
-    const $wrapper = document.createElement('article');
+    const $wrapper = document.createElement("article");
 
     const photographerCard = `
       <a href="photographer.html?id=${this._photographer.id}" title="${this._photographer.name}">

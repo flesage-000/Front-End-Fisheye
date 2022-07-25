@@ -7,20 +7,17 @@ class Factory {
    */
   constructor(data, page) {
     switch (page) {
-      case 'index':
-        return new Photographers(data)
-        break;
+      case "index":
+        return new Photographers(data);
 
-      case 'photographerHeader':
-        return new Photographers(data)
-        break;
+      case "photographerHeader":
+        return new Photographers(data);
 
-      case 'photographer':
-        return new Medias(data)
-        break;
+      case "photographer":
+        return new Medias(data);
 
       default:
-        throw 'unknwon page !!!';
+        throw "unknwon page !!!";
     }
   }
 }

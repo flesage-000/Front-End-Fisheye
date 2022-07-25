@@ -1,5 +1,5 @@
 /**
- * Template of cta part like's total and photographer price
+ * Template of cta part like"s total and photographer price
  */
 class PhotographerCta {
   /**
@@ -15,8 +15,8 @@ class PhotographerCta {
    * @returns HTML node
    */
   createPhotographerCta() {
-    const $wrapper = document.createElement('div');
-    $wrapper.classList.add('cta__counter');
+    const $wrapper = document.createElement("div");
+    $wrapper.classList.add("cta__counter");
 
     const photographerCounter = `
       <div class="cta__counter">
@@ -26,7 +26,7 @@ class PhotographerCta {
     `;
 
     $wrapper.innerHTML = photographerCounter;
-    return $wrapper
+    return $wrapper;
   }
 
   /**
@@ -34,12 +34,12 @@ class PhotographerCta {
    * @returns HTML node
    */
   createPhotographerPrice() {
-    const $wrapper = document.createElement('div');
-    $wrapper.classList.add('cta__price');
+    const $wrapper = document.createElement("div");
+    $wrapper.classList.add("cta__price");
 
     const photographerPrice = this._data.price;
 
     $wrapper.innerText = photographerPrice;
-    return $wrapper
+    return $wrapper;
   }
 }

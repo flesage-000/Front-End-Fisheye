@@ -10,30 +10,30 @@ class AppPhotographer {
     this._lightbox = new PhotographerLightbox();
 
     // HTML header
-    this.$photographerHeaderWrapper = document.querySelector('.photograph__header');
+    this.$photographerHeaderWrapper = document.querySelector(".photograph__header");
     // HTML content
-    this.$mediaContentWrapper = document.querySelector('.photograph__content');
+    this.$mediaContentWrapper = document.querySelector(".photograph__content");
     // HTML content articles
-    this.$mediaWrapper = document.querySelector('.articles');
+    this.$mediaWrapper = document.querySelector(".articles");
     // HTML cta
-    this.$photographerCtaWrapper = document.querySelector('.cta');
+    this.$photographerCtaWrapper = document.querySelector(".cta");
     // HTML lightbox
-    this.$lightboxWrapper = document.querySelector('#lightbox .lightbox__viewer');
+    this.$lightboxWrapper = document.querySelector("#lightbox .lightbox__viewer");
     // HTML modal form
-    this.$modalWrapper = document.querySelector('#contact_modal');
+    this.$modalWrapper = document.querySelector("#contact_modal");
   }
 
   CreatePhotographer(sortType) {
-    const photographerID = getUrlParameter('id');
+    const photographerID = getUrlParameter("id");
 
     // Create header
     this._photographerData.photographers
       .filter(function(photographer) {
         // Get data from photographer ID
-        return photographer.id == photographerID
+        return photographer.id == photographerID;
       })
       .forEach(photographer => {
-        photographer = new Factory(photographer, 'photographerHeader');
+        photographer = new Factory(photographer, "photographerHeader");
 
         const photographerCard = new PhotographerHeader(photographer);
         this.$photographerHeaderWrapper.appendChild(
@@ -44,7 +44,7 @@ class AppPhotographer {
         this.$photographerHeaderWrapper.appendChild(
           contact.button()
         );
-        this.$modalWrapper.classList.add('modal', 'modalContact');
+        this.$modalWrapper.classList.add("modal", "modalContact");
         this.$modalWrapper.appendChild(
           contact.form()
         );
@@ -64,26 +64,26 @@ class AppPhotographer {
     this._photographerData.media
       .filter(function(media) {
         // Get data from photographer ID
-        return media.photographerId == photographerID
+        return media.photographerId == photographerID;
       })
       .sort(function (a, b) {
         let result = null;
         switch(sortType) {
-          case 'popularity':
+          case "popularity":
             result = a.likes - b.likes;
             break;
-          case 'title':
+          case "title":
             result = a.title.localeCompare(b.title);
             break;
-          case 'date':
+          case "date":
           default:
             result = new Date(a.date) + new Date(b.date);
             break;
         }
-        return result
+        return result;
       })
       .forEach((media, index, array) => {
-        media = new Factory(media, 'photographer');
+        media = new Factory(media, "photographer");
 
         const MediaTemplate = new MediaCard(media);
         const LightboxTemplate = new PhotographerLightbox(media);
@@ -115,7 +115,7 @@ class AppPhotographer {
       });
 
       const dropdownSorter = new DropdownSorter();
-      this.$mediaContentWrapper.insertAdjacentElement('afterbegin', dropdownSorter.CreateDropdownSorter());
+      this.$mediaContentWrapper.insertAdjacentElement("afterbegin", dropdownSorter.CreateDropdownSorter());
 
       // Create likes counter
       const LikesCounter = new PhotographerCta(this._likesCount);

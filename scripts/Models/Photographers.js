@@ -14,30 +14,30 @@ class Photographers {
   }
 
   get name() {
-    return this._name
+    return this._name;
   }
 
   get id() {
-    return this._id
+    return this._id;
   }
 
   get city() {
-    return this._city
+    return this._city;
   }
 
   get country() {
-    return this._country
+    return this._country;
   }
 
   get tagline() {
-    return this._tagline
+    return this._tagline;
   }
 
   get price() {
-    return this._price + '€/jour'
+    return this._price + "€/jour";
   }
 
   get portrait() {
-    return './assets/photographers/Photographers ID Photos/' + this._portrait
+    return "./assets/photographers/Photographers ID Photos/" + this._portrait;
   }
 }

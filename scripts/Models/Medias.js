@@ -15,42 +15,42 @@ class Medias {
   }
 
   get id() {
-    return this._id
+    return this._id;
   }
 
   get photographerID() {
-    return this._photographerID
+    return this._photographerID;
   }
 
   get title() {
-    return this._title
+    return this._title;
   }
 
   get image() {
     if (this._image !== undefined) {
-      return './assets/photographers/' + this._photographerID + '/' + this._image
+      return "./assets/photographers/" + this._photographerID + "/" + this._image;
     } else {
-      return null
+      return null;
     }
   }
 
   get video() {
     if (this._video !== undefined){
-      return './assets/photographers/' + this._photographerID + '/' + this._video
+      return "./assets/photographers/" + this._photographerID + "/" + this._video;
     } else {
-      return null
+      return null;
     }
   }
 
   get likes() {
-    return this._likes
+    return this._likes;
   }
 
   get date() {
-    return this._date
+    return this._date;
   }
 
   get price() {
-    return this._price
+    return this._price;
   }
 }

@@ -11,7 +11,7 @@ class DropdownSorter {
    * @returns HTML node
    */
   CreateDropdownSorter() {
-    const $wrapper = document.createElement('div');
+    const $wrapper = document.createElement("div");
     const dropdown = `
       <input type="radio" name="sortType" value="popularity" checked="checked" id="sort-popularity">
       <label for="sort-popularity">Popularité</label>
@@ -25,9 +25,9 @@ class DropdownSorter {
 
     $wrapper.innerHTML = dropdown;
     this.Init($wrapper);
-    $wrapper.classList.add('dropdown');
+    $wrapper.classList.add("dropdown");
 
-    return $wrapper
+    return $wrapper;
   }
 
   /**
@@ -35,23 +35,23 @@ class DropdownSorter {
    * @param {object} element The dropdown HTML node
    */
   Init(element) {
-    element.addEventListener('click', function(event) {
+    element.addEventListener("click", function(event) {
       event.preventDefault();
       event.stopPropagation();
 
       let classList = this.classList;
 
-      if (classList.contains('expanded')) { // Click on element of sorter
-        const input = document.getElementById(event.target.getAttribute('for'));
+      if (classList.contains("expanded")) { // Click on element of sorter
+        const input = document.getElementById(event.target.getAttribute("for"));
         const inputValue = input.value;
 
-        this.classList.toggle('expanded');
+        this.classList.toggle("expanded");
         input.checked = true;
 
         const appPhotographer = new AppPhotographer(this._PhotographersData);
         appPhotographer.CreatePhotographer(inputValue);
       } else { // Open the sorter
-        this.classList.toggle('expanded');
+        this.classList.toggle("expanded");
       }
     });
   }
