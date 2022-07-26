@@ -58,6 +58,7 @@ class PhotographerLightbox {
     const lightbox = document.querySelector("#lightbox");
     const lightboxButtons = lightbox.querySelectorAll("a");
 
+    // Events for clicks
     lightboxButtons.forEach(button => {
       this.eventsListeners.addListener(
         button.addEventListener("click", function(event) {
@@ -82,6 +83,7 @@ class PhotographerLightbox {
       );
     });
 
+    // Event for keys
     this.eventsListeners.addListener(
       window.addEventListener("keydown", function(event) {
         event.preventDefault();

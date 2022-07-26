@@ -63,15 +63,24 @@ class formValidator {
     if (elementIsValid) {
       const errorElement = parent.querySelector("." + validationType);
 
-      if (errorElement) errorElement.remove();
+      if (errorElement) {
+        errorElement.remove();
+
+        const errorStillPresent = parent.querySelectorAll(".error").length;
+        if (errorStillPresent == 0) {
+          element.setAttribute("aria-invalid", "false");
+        }
+      }
 
     } else if (!elementIsValid && !hasError) {
       const $wrapper = document.createElement("span");
 
+      $wrapper.classList.add("error");
       $wrapper.classList.add(validationType);
       $wrapper.innerText = validationMessage;
 
       parent.appendChild($wrapper);
+      element.setAttribute("aria-invalid", "true");
     }
   }
 }

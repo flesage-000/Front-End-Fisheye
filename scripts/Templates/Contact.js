@@ -1,3 +1,6 @@
+// Aria modal sample from https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog#support-notice-header
+// Aria inputs sample from https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/forms/Basic_form_hints
+
 class Contact {
   /**
    *
@@ -16,16 +19,22 @@ class Contact {
     const $wrapper = document.createElement("div");
     $wrapper.classList.add("photograph__header__contact");
     const button = document.createElement("button");
+    const photographerName = this._data._name;
 
     button.classList.add("contact_button");
     button.innerText = "Contactez-moi";
-    button.setAttribute("aria-label", "Contact Me");
+    button.setAttribute("aria-labelledby", "Contact Me.");
+    button.setAttribute("aria-describedby", `Contacter ${photographerName}.`);
 
     this.eventsListeners.addListener(
       function () {
         button.addEventListener("click", function() {
           const modal = document.querySelector("#contact_modal");
+
+          modal.setAttribute("aria-labelledby", `Formulaire pour contacter ${photographerName}.`);
+
           modal.style.display = "block";
+          modal.querySelector("#contact_lastname").focus();
         });
       }
     );
@@ -40,32 +49,33 @@ class Contact {
    * @returns HTML contact node
    */
   form() {
+    const photographerName = this._data._name;
     const $wrapper = document.createElement("div");
     const form = `
       <header>
-        <h2>Contactez-moi<br><span>${this._data.name}</span></h2>
+        <h2>Contactez-moi<br><span>${photographerName}</span></h2>
         <img src="assets/icons/close.svg">
       </header>
       <form novalidate>
         <fieldset>
           <div>
             <label for="contact_lastname">Prénom</label>
-            <input type="text" id="contact_lastname" placeholder="Prénom" />
+            <input type="text" id="contact_lastname" placeholder="Prénom" aria-labelledby="Prénom" aria-describedby="Entrer votre prénom" aria_required="true" />
           </div>
           <div>
             <label for="contact_firstname">Nom</label>
-            <input type="text" id="contact_firstname" placeholder="Nom" />
+            <input type="text" id="contact_firstname" placeholder="Nom" aria-labelledby="Nom" aria-describedby="Entrer votre nom" aria_required="true" />
           </div>
           <div>
             <label for="contact_email">Email</label>
-            <input type="text" id="contact_email" placeholder="Email" />
+            <input type="text" id="contact_email" placeholder="Email" aria-labelledby="adresse email" aria-describedby="Entrer votre adresse email" aria_required="true" />
           </div>
           <div>
             <label for="contact_message">Votre message</label>
-            <textarea id="contact_message" placeholder="Votre message"></textarea>
+            <textarea id="contact_message" placeholder="Votre message" aria-labelledby="message" aria-describedby="Entrer votre message à destination de ${photographerName}" aria_required="true"></textarea>
           </div>
         </fieldset>
-        <button class="contact_submit" type="submit">Envoyer</button>
+        <button class="contact_submit" type="submit" aria-describedby="Valider et envoyer le formulaire de contact à ${photographerName}">Envoyer</button>
       </form>
     `;
 
@@ -275,6 +285,9 @@ class Contact {
         closeButton.addEventListener("click", function() {
           const modal = document.querySelector("#contact_modal");
           modal.style.display = "none";
+
+          const contactBtn = document.querySelector(".contact_button");
+          contactBtn.focus();
         });
       }
     );
