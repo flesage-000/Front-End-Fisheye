@@ -86,6 +86,7 @@ class PhotographerLightbox {
     // Event for keys
     this.eventsListeners.addListener(
       window.addEventListener("keydown", function(event) {
+        if (lightbox.classList.contains("close")) { return; }
         event.preventDefault();
         let action = null;
         const eventCode = event.code;
