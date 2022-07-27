@@ -102,7 +102,10 @@ class MediaCard {
           lightboxContainer.setAttribute("aria-hidden", "false");
           document.querySelector("#main").setAttribute("aria-hidden", "true");
 
-          lightboxContainer.querySelector("[data-index=\"" + index + "\"]").style.display = "flex";
+          const currentMediaIndex = lightboxContainer.querySelector("[data-index=\"" + index + "\"]");
+          currentMediaIndex.style.display = "flex";
+          currentMediaIndex.setAttribute("aria-hidden", "false");
+
           lightboxContainer.classList.remove("close");
         });
       }

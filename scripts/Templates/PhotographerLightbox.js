@@ -20,6 +20,8 @@ class PhotographerLightbox {
     const $wrapper = document.createElement("div");
     $wrapper.classList.add("lightbox__viewer__media");
     $wrapper.setAttribute("data-index", index);
+    $wrapper.setAttribute("aria-hidden", "true");
+
     const image = `
       <img src="${this._data.image}">
     `;
@@ -38,6 +40,7 @@ class PhotographerLightbox {
     const $wrapper = document.createElement("div");
     $wrapper.classList.add("lightbox__viewer__media");
     $wrapper.setAttribute("data-index", index);
+    $wrapper.setAttribute("aria-hidden", "true");
 
     const video = `
       <video controls width="250">
@@ -74,9 +77,7 @@ class PhotographerLightbox {
             }
             case "close": {
               lightbox.classList.add("close");
-
-              lightbox.setAttribute("aria-hidden", "true");
-              document.querySelector("#main").setAttribute("aria-hidden", "false");
+              lightbox.querySelector(".lightbox__viewer__media[aria-hidden^=\"false\"]").setAttribute("aria-hidden", "true");
 
               // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
               lightbox.querySelector(".lightbox__viewer__media[style^=\"display\"]").style.display = null;
@@ -112,6 +113,8 @@ class PhotographerLightbox {
           }
           case "close": {
             lightbox.classList.add("close");
+            lightbox.querySelector(".lightbox__viewer__media[aria-hidden^=\"false\"]").setAttribute("aria-hidden", "true");
+
             // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
             lightbox.querySelector(".lightbox__viewer__media[style^=\"display\"]").style.display = null;
             break;
@@ -135,7 +138,11 @@ class PhotographerLightbox {
     const nextIndex = getNextIndex(allMediaLength, currentIndex, action);
 
     currentMedia.style.display = null;
-    lightbox.querySelector("[data-index=\"" + nextIndex + "\"]").style.display = "flex";
+    currentMedia.setAttribute("aria-hidden", "true");
+
+    const nextMediaNode = lightbox.querySelector("[data-index=\"" + nextIndex + "\"]");
+    nextMediaNode.style.display = "flex";
+    nextMediaNode.setAttribute("aria-hidden", "false");
 
     /**
      * Return the next index to display.
