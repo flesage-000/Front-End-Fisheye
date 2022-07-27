@@ -69,17 +69,33 @@ class formValidator {
         const errorStillPresent = parent.querySelectorAll(".error").length;
         if (errorStillPresent == 0) {
           element.setAttribute("aria-invalid", "false");
+          element.setAttribute("aria-errormessage", "");
+          parent.querySelector("div").remove();
         }
       }
 
     } else if (!elementIsValid && !hasError) {
-      const $wrapper = document.createElement("span");
+      const parentID = parent.querySelector(".form").getAttribute("id");
+      const formElement = parent.querySelector(".form");
+      const ariaErrorMessageID = parentID + "_errorMessage";
+      let $wrapper = parent.querySelector(ariaErrorMessageID) || null;
 
-      $wrapper.classList.add("error");
-      $wrapper.classList.add(validationType);
-      $wrapper.innerText = validationMessage;
+      if ($wrapper !== null) {
+        $wrapper = parent.querySelector("#" + ariaErrorMessageID);
+      } else {
+        $wrapper = document.createElement("div");
+        $wrapper.setAttribute("id", ariaErrorMessageID);
+      }
 
+      const $wrapperError = document.createElement("span");
+
+      $wrapperError.classList.add("error");
+      $wrapperError.classList.add(validationType);
+      $wrapperError.innerText = validationMessage;
+
+      $wrapper.appendChild($wrapperError);
       parent.appendChild($wrapper);
+      formElement.setAttribute("aria-error-message", ariaErrorMessageID);
       element.setAttribute("aria-invalid", "true");
     }
   }

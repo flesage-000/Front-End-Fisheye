@@ -22,6 +22,7 @@ class Contact {
     const photographerName = this._data._name;
 
     button.classList.add("contact_button");
+    button.classList.add("formatted");
     button.innerText = "Contactez-moi";
     button.setAttribute("aria-labelledby", "Contact Me.");
     button.setAttribute("aria-describedby", `Contacter ${photographerName}.`);
@@ -32,6 +33,9 @@ class Contact {
           const modal = document.querySelector("#contact_modal");
 
           modal.setAttribute("aria-labelledby", `Formulaire pour contacter ${photographerName}.`);
+
+          document.querySelector("#main").setAttribute("aria-hidden", "true");
+          modal.setAttribute("aria-hidden", "false");
 
           modal.style.display = "block";
           modal.querySelector("#contact_lastname").focus();
@@ -54,28 +58,28 @@ class Contact {
     const form = `
       <header>
         <h2>Contactez-moi<br><span>${photographerName}</span></h2>
-        <img src="assets/icons/close.svg">
+        <button aria-labelledby="Fermer le formulaire" aria-describedby="closeForm"><img src="assets/icons/close.svg" title="Fermer le formulaire"></button>
       </header>
       <form novalidate>
         <fieldset>
           <div>
             <label for="contact_lastname">Prénom</label>
-            <input type="text" id="contact_lastname" placeholder="Prénom" aria-labelledby="Prénom" aria-describedby="Entrer votre prénom" aria_required="true" />
+            <input type="text" id="contact_lastname" class="form" placeholder="Prénom" aria-labelledby="Prénom" aria-describedby="lastname" aria_required="true" />
           </div>
           <div>
             <label for="contact_firstname">Nom</label>
-            <input type="text" id="contact_firstname" placeholder="Nom" aria-labelledby="Nom" aria-describedby="Entrer votre nom" aria_required="true" />
+            <input type="text" id="contact_firstname" class="form" placeholder="Nom" aria-labelledby="Nom" aria-describedby="firstname" aria_required="true" />
           </div>
           <div>
             <label for="contact_email">Email</label>
-            <input type="text" id="contact_email" placeholder="Email" aria-labelledby="adresse email" aria-describedby="Entrer votre adresse email" aria_required="true" />
+            <input type="text" id="contact_email" class="form" placeholder="Email" aria-labelledby="adresse email" aria-describedby="email" aria_required="true" />
           </div>
           <div>
             <label for="contact_message">Votre message</label>
-            <textarea id="contact_message" placeholder="Votre message" aria-labelledby="message" aria-describedby="Entrer votre message à destination de ${photographerName}" aria_required="true"></textarea>
+            <textarea id="contact_message" class="form" placeholder="Votre message" aria-labelledby="message" aria-describedby="message" aria_required="true"></textarea>
           </div>
         </fieldset>
-        <button class="contact_submit" type="submit" aria-describedby="Valider et envoyer le formulaire de contact à ${photographerName}">Envoyer</button>
+        <button class="contact_submit formatted" type="submit" aria-describedby="validateMessage">Envoyer</button>
       </form>
     `;
 
@@ -281,9 +285,13 @@ class Contact {
     // Close button
     this.eventsListeners.addListener(
       function () {
-        const closeButton = $wrapper.querySelector("header img");
+        const closeButton = $wrapper.querySelector("header button");
         closeButton.addEventListener("click", function() {
           const modal = document.querySelector("#contact_modal");
+
+          modal.setAttribute("aria-hidden", "true");
+          document.querySelector("#main").setAttribute("aria-hidden", "false");
+
           modal.style.display = "none";
 
           const contactBtn = document.querySelector(".contact_button");

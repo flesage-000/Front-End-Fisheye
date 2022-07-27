@@ -1,15 +1,17 @@
 button {
-  @include font($color: $clr-white, $fontSize: 20px, $fontWeight: 700, $lineHeight: 26px);
-  background-color: $clr-red-dark-02;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
+  &.formatted {
+    @include font($color: $clr-white, $fontSize: 20px, $fontWeight: 700, $lineHeight: 26px);
+    background-color: $clr-red-dark-02;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
 
-  min-width: 170px;
-  padding: 21px 11px;
-  &:hover {
-    @include font($color: $clr-black, $fontSize: 20px, $fontWeight: 700, $lineHeight: 26px);
-    background-color: $clr-pale-copper-01;
+    min-width: 170px;
+    padding: 21px 11px;
+    &:hover {
+      @include font($color: $clr-black, $fontSize: 20px, $fontWeight: 700, $lineHeight: 26px);
+      background-color: $clr-pale-copper-01;
+    }
   }
 
   &.modalContact {}
