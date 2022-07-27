@@ -99,6 +99,9 @@ class MediaCard {
           const index = articlesContainer.dataset.index;
           const lightboxContainer = document.querySelector("#lightbox");
 
+          lightboxContainer.setAttribute("aria-hidden", "false");
+          document.querySelector("#main").setAttribute("aria-hidden", "true");
+
           lightboxContainer.querySelector("[data-index=\"" + index + "\"]").style.display = "flex";
           lightboxContainer.classList.remove("close");
         });

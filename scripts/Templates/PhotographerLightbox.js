@@ -56,7 +56,7 @@ class PhotographerLightbox {
    */
   lightbox() {
     const lightbox = document.querySelector("#lightbox");
-    const lightboxButtons = lightbox.querySelectorAll("a");
+    const lightboxButtons = lightbox.querySelectorAll("button");
 
     // Events for clicks
     lightboxButtons.forEach(button => {
@@ -74,6 +74,10 @@ class PhotographerLightbox {
             }
             case "close": {
               lightbox.classList.add("close");
+
+              lightbox.setAttribute("aria-hidden", "true");
+              document.querySelector("#main").setAttribute("aria-hidden", "false");
+
               // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
               lightbox.querySelector(".lightbox__viewer__media[style^=\"display\"]").style.display = null;
               break;
