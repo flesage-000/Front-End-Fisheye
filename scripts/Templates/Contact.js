@@ -274,9 +274,10 @@ class Contact {
           _formValidator.errorManager(messageNode, messageMinLengthIsValid, "minlength", messageMinErrorMessage);
 
           if (lastNameValueIsValid && lastNameMinLengthIsValid && firstNameIsValid && firstNameMinLengthIsValid && emailRequiredIsValid && emailFormatIsValid && messageRequiredIsValid && messageMinLengthIsValid) {
-            console.log("form is valid");
-          } else {
-            console.log("form NOT valid");
+            console.log("Prénom: ", lastNameNode.value);
+            console.log("Nom: ", firstNameNode.value);
+            console.log("Mail: ", emailNode.value);
+            console.log("Message: ", messageNode.value);
           }
         });
       }
