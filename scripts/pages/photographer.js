@@ -93,8 +93,9 @@ class AppPhotographer {
   contentPhotographer(sortType) {
     const photographerID = getUrlParameter("id");
 
-    // Because content can be sorted we arbitrary remove content from container
+    // Because content can be sorted we arbitrary remove content from container AND the lightbox
     document.querySelector(".photograph__content > .articles").innerHTML = "";
+    document.querySelector(".lightbox__viewer").innerHTML = "";
 
     // Create cards
     this._photographerData.media
