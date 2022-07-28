@@ -22,7 +22,7 @@ class MediaCard {
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
         <span class="articles__media__like__total">${this._media.likes}</span>
-        <span class="articles__media__like__heart"></span>
+        <button class="articles__media__like__heart" aria-label="Cliquer pour aimer ce média."></button>
       </span>
     `;
 
@@ -52,7 +52,7 @@ class MediaCard {
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
         <span class="articles__media__like__total">${this._media.likes}</span>
-        <span class="articles__media__like__heart"></span>
+        <button class="articles__media__like__heart" aria-label="Cliquer pour aimer ce média."></button>
       </span>
     `;
 
