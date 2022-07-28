@@ -39,12 +39,15 @@
     }
   }
   &__content {
+    &__sortby {
+      font-weight: 900;
+    }
     .dropdown-container {
       position: relative;
       .dropdown {
         position: absolute;
-        top: 0;
-        left: 5px;
+        top: -6px;
+        left: 85px;
       }
     }
   }
@@ -57,9 +60,7 @@
 
     .sorter {
       span {}
-      span::first-child {
-
-      }
+      span::first-child {}
     }
     .articles {
       margin-top: 58px;

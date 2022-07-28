@@ -1,7 +1,7 @@
 // https://codepen.io/j0be/pen/jWGVvV?editors=1100
 
 .dropdown {
-  min-width: 12em;
+  // min-width: 12em;
   position: relative;
   display: inline-block;
   margin-right: 1em;
@@ -12,17 +12,14 @@
   cursor: pointer;
   text-align: left;
   white-space: nowrap;
-  color: #444;
+  color: $clr-white;
 
   outline: none;
-  border: .06em solid transparent;
-  border-radius: 1em;
-  background-color: #FFF;
+  border-radius: 5px;
+  background-color: $clr-red-dark-01;
 
   transition: $timer-fast all ease-in-out;
-  input:focus + label {
-    background: #def;
-  }
+  input:focus + label {}
   input {
     width: 1px;
     height: 1px;
@@ -31,7 +28,7 @@
     opacity: 0.01;
   }
   label {
-    border-top: .06em solid #d9d9d9;
+    border-top: .06em solid $clr-white;
     display:block;
     height: 2em;
     line-height: 2em;
@@ -42,7 +39,7 @@
     transition: $timer-fast color ease-in-out;
     &:nth-child(2) {
       margin-top: 2em;
-      border-top: .06em solid #d9d9d9;
+      border-top: .06em solid $clr-white;
     }
   }
   input:checked + label {
@@ -63,13 +60,13 @@
     position: absolute;
     right: 0.8em;
     top: 0.9em;
-    border: .3em solid #3694d7;
-    border-color: #3694d7 transparent transparent transparent;
+    border: .3em solid $clr-white;
+    border-color: $clr-white transparent transparent transparent;
     transition: .4s all ease-in-out;
   }
   &.expanded {
-    border: .06em solid #3694d7;
-    background: #fff;
+    // border: .06em solid #3694d7;
+    background: $clr-red-dark-01;
     border-radius: .25em;
     padding: 0;
     box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
@@ -77,13 +74,9 @@
 
     label {
       border-top: .06em solid #d9d9d9;
-      &:hover {
-        color:#3694d7;
-      }
+      &:hover {}
     }
-    input:checked + label {
-      color:#3694d7;
-    }
+    input:checked + label {}
 
     &::after {
       transform: rotate(-180deg);

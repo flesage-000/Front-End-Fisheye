@@ -10,6 +10,8 @@ class DropdownSorter {
    */
   CreateDropdownSorter() {
     const $wrapper = document.createElement("div");
+    const $text = document.createElement("span");
+    const $dropdown = document.createElement("div");
     const dropdown = `
       <input type="radio" name="sortType" value="popularity" checked="checked" id="sort-popularity">
       <label for="sort-popularity">Popularité</label>
@@ -21,8 +23,16 @@ class DropdownSorter {
       <label for="sort-title">Titre</label>
     `;
 
-    $wrapper.innerHTML = dropdown;
-    $wrapper.classList.add("dropdown");
+
+    $text.innerText = "Trier par";
+    $text.classList.add("photograph__content__sortby");
+
+    $dropdown.innerHTML = dropdown;
+    $dropdown.classList.add("dropdown");
+
+    $wrapper.insertAdjacentElement("beforeend", $text);
+    $wrapper.insertAdjacentElement("beforeend", $dropdown);
+    $wrapper.classList.add("dropdown-container");
 
     return $wrapper;
   }
