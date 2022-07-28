@@ -105,8 +105,9 @@ class MediaCard {
           const currentMediaIndex = lightboxContainer.querySelector("[data-index=\"" + index + "\"]");
           currentMediaIndex.style.display = "flex";
           currentMediaIndex.setAttribute("aria-hidden", "false");
-
           lightboxContainer.classList.remove("close");
+
+          lightboxContainer.querySelector(".lightbox__controller__next button").focus();
         });
       }
     );
