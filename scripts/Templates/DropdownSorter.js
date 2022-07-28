@@ -2,9 +2,7 @@
  * Manage dropdown sorter
  */
 class DropdownSorter {
-  constructor() {
-    this.AppPhotographer = new AppPhotographer();
-  }
+  constructor() {}
 
   /**
    * Generate dropdown HTML node
@@ -24,35 +22,8 @@ class DropdownSorter {
     `;
 
     $wrapper.innerHTML = dropdown;
-    this.Init($wrapper);
     $wrapper.classList.add("dropdown");
 
     return $wrapper;
-  }
-
-  /**
-   *  Add listener to dropdown
-   * @param {object} element The dropdown HTML node
-   */
-  Init(element) {
-    element.addEventListener("click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      let classList = this.classList;
-
-      if (classList.contains("expanded")) { // Click on element of sorter
-        const input = document.getElementById(event.target.getAttribute("for"));
-        const inputValue = input.value;
-
-        this.classList.toggle("expanded");
-        input.checked = true;
-
-        const appPhotographer = new AppPhotographer(this._PhotographersData);
-        appPhotographer.CreatePhotographer(inputValue);
-      } else { // Open the sorter
-        this.classList.toggle("expanded");
-      }
-    });
   }
 }

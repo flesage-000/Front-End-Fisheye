@@ -23,7 +23,32 @@ class AppPhotographer {
     this.$modalWrapper = document.querySelector("#contact_modal");
   }
 
+  /**
+   * Generate the photographer page
+   * @param {string} sortType
+   */
   CreatePhotographer(sortType) {
+
+    this.headerPhotographer();
+
+    this.contentPhotographer(sortType);
+
+    const dropdownSorter = new DropdownSorter();
+    const dropdownElement = dropdownSorter.CreateDropdownSorter();
+    this.$mediaContentWrapper.insertAdjacentElement("afterbegin", dropdownElement);
+    this.dropdownEvent(dropdownElement);
+
+    // Create likes counter
+    const LikesCounter = new PhotographerCta(this._likesCount);
+    this.$photographerCtaWrapper.appendChild(
+      LikesCounter.createPhotographerCta()
+    );
+  }
+
+  /**
+   * Generate the header of photographer page
+   */
+  headerPhotographer() {
     const photographerID = getUrlParameter("id");
 
     // Create header
@@ -59,6 +84,17 @@ class AppPhotographer {
           photographerCta.createPhotographerPrice()
         );
       });
+  }
+
+  /**
+   * Generate the content of photographer page
+   * @param {string} sortType
+   */
+  contentPhotographer(sortType) {
+    const photographerID = getUrlParameter("id");
+
+    // Because content can be sorted we arbitrary remove content from container
+    document.querySelector(".photograph__content > .articles").innerHTML = "";
 
     // Create cards
     this._photographerData.media
@@ -113,14 +149,30 @@ class AppPhotographer {
         // Likes counter
         this._likesCount += media._likes;
       });
+  }
 
-      const dropdownSorter = new DropdownSorter();
-      this.$mediaContentWrapper.insertAdjacentElement("afterbegin", dropdownSorter.CreateDropdownSorter());
+  /**
+   * The dropdown event
+   * @param {object} dropdownElement
+   */
+  dropdownEvent(dropdownElement) {
+    dropdownElement.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
 
-      // Create likes counter
-      const LikesCounter = new PhotographerCta(this._likesCount);
-      this.$photographerCtaWrapper.appendChild(
-        LikesCounter.createPhotographerCta()
-      );
+      const element = event.target;
+      const parentElement = element.parentNode;
+      let parentElementClassList = parentElement.classList;
+
+      if (parentElementClassList.contains("expanded")) { // Click on element of sorter
+        const input = document.getElementById(element.getAttribute("for"));
+        const inputValue = input.value;
+        input.checked = true;
+
+        this.contentPhotographer(inputValue);
+      }
+
+      parentElement.classList.toggle("expanded");
+    });
   }
 }
