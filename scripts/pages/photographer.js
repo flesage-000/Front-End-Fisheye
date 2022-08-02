@@ -107,7 +107,7 @@ class AppPhotographer {
         let result = null;
         switch(sortType) {
           case "popularity":
-            result = a.likes + b.likes;
+            result = b.likes * 1 - a.likes * 1;
             break;
           case "title":
             result = a.title.localeCompare(b.title);
