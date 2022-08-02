@@ -98,7 +98,6 @@ class PhotographerLightbox {
         const eventCode = event.code;
 
         if (lightbox.classList.contains("close") || eventCode === "Tab") {
-          console.log("event not for lightbox");
           return;
         }
 
