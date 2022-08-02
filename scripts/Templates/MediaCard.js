@@ -18,7 +18,7 @@ class MediaCard {
   createImageCard(index) {
     const $wrapper = document.createElement("article");
     const mediaCard = `
-      <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><img src="${this._media.image}" class="articles__media__img" title="${this._media.title}, close up view"></a>
+      <a href="#" title="${this._media.title}, close up view" class="lightboxOpener"><img src="${this._media.image}" class="articles__media__img" alt="${this._media.title}, close up view" title="${this._media.title}, close up view"></a>
       <span class="articles__media__name">${this._media.title}</span>
       <span class="articles__media__like">
         <span class="articles__media__like__total">${this._media.likes}</span>

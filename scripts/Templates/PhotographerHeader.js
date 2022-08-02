@@ -42,7 +42,7 @@ class PhotographerHeader {
     $wrapper.classList.add("photograph__header__picture");
 
     const photographerPicture = `
-      <img src="${this._data.portrait}" alt="${this._data.name}">
+      <img src="${this._data.portrait}" alt="Vignette de ${this._data.name}" title="${this._data.name}">
     `;
 
     $wrapper.innerHTML = photographerPicture;

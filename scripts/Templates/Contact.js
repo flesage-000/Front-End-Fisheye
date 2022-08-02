@@ -58,7 +58,7 @@ class Contact {
     const form = `
       <header>
         <h2>Contactez-moi<br><span>${photographerName}</span></h2>
-        <button aria-labelledby="Fermer le formulaire" aria-describedby="closeForm"><img src="assets/icons/close.svg" title="Fermer le formulaire"></button>
+        <button aria-labelledby="Fermer le formulaire" aria-describedby="closeForm"><img src="assets/icons/close.svg" alt="croix symbolisant la fonctionnalité de fermeture du formulaire" title="Fermer le formulaire"></button>
       </header>
       <form novalidate>
         <fieldset>

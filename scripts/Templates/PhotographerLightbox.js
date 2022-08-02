@@ -23,7 +23,7 @@ class PhotographerLightbox {
     $wrapper.setAttribute("aria-hidden", "true");
 
     const image = `
-      <img src="${this._data.image}">
+      <img src="${this._data.image}" alt="Média ${this._data.title}" title="Média ${this._data.title}">
     `;
 
     $wrapper.innerHTML = image;

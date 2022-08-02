@@ -19,7 +19,7 @@ class PhotographerCard {
 
     const photographerCard = `
       <a href="photographer.html?id=${this._photographer.id}" title="${this._photographer.name}">
-        <img src="${this._photographer.portrait}" alt="">
+        <img src="${this._photographer.portrait}" alt="Vignette de ${this._photographer.name}" title="${this._photographer.name}">
         <h2>${this._photographer.name}</h2>
       </a>
       <address>
