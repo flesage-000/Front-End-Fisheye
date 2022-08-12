@@ -21,6 +21,11 @@ class AppPhotographer {
     this.$lightboxWrapper = document.querySelector("#lightbox .lightbox__viewer");
     // HTML modal form
     this.$modalWrapper = document.querySelector("#contact_modal");
+
+    this.photographerID = getUrlParameter("id");
+    this.mediaPhotographer = this._photographerData.media.filter(
+      media => {return media.photographerId == this.photographerID;}
+    );
   }
 
   /**
@@ -30,8 +35,7 @@ class AppPhotographer {
   CreatePhotographer(sortType) {
 
     this.headerPhotographer();
-
-    this.contentPhotographer(sortType);
+    this.contentPhotographer(sortType, true, this.mediaPhotographer);
 
     const dropdownSorter = new DropdownSorter();
     const dropdownElement = dropdownSorter.CreateDropdownSorter();
@@ -91,19 +95,13 @@ class AppPhotographer {
    * Generate the content of photographer page
    * @param {string} sortType
    */
-  contentPhotographer(sortType, reloadLightBox = true) {
-    const photographerID = getUrlParameter("id");
-
+  contentPhotographer(sortType, reloadLightBox, mediaPhotographer) {
     // Because content can be sorted we arbitrary remove content from container AND the lightbox
     document.querySelector(".photograph__content > .articles").innerHTML = "";
     document.querySelector(".lightbox__viewer").innerHTML = "";
 
     // Create cards
-    this._photographerData.media
-      .filter(function(media) {
-        // Get data from photographer ID
-        return media.photographerId == photographerID;
-      })
+    mediaPhotographer
       .sort(function (a, b) {
         let result = null;
         switch(sortType) {
@@ -147,6 +145,10 @@ class AppPhotographer {
         if (index == array.length - 1 && reloadLightBox) {
           LightboxTemplate.lightbox();
         }
+        // likes init
+        if (index == array.length - 1) {
+          this.likeEvent(mediaPhotographer);
+        }
 
         // Likes counter
         this._likesCount += media._likes;
@@ -172,10 +174,33 @@ class AppPhotographer {
         const inputValue = input.value;
         input.checked = true;
 
-        this.contentPhotographer(inputValue, false);
+        this.contentPhotographer(inputValue, false, this.mediaPhotographer);
       }
 
       parentElement.classList.toggle("expanded");
+    });
+  }
+
+  likeEvent(mediaPhotographer) {
+    const likesButtons = document.querySelectorAll(".articles__media__like__heart");
+    likesButtons.forEach(element => {
+      const addLike = (event) => {
+        const parentNode = event.target.parentNode;
+        const likesNode = parentNode.querySelector(".articles__media__like__total");
+        likesNode.innerText =  likesNode.innerText * 1 + 1;
+        // event.target.innerHTML += 1;
+
+        const parentArticle = event.target.closest(".articles__media");
+        const index = parentArticle.dataset.index;
+        mediaPhotographer[index].likes += 1;
+
+        const likesGlobalNode = document.querySelector(".cta__counter__count")
+        likesGlobalNode.innerText = likesGlobalNode.innerText * 1 + 1;
+
+      };
+      element.addEventListener('click', addLike, false);
+      element.addEventListener('keydown', addLike, false);
+
     });
   }
 }
