@@ -91,7 +91,7 @@ class AppPhotographer {
    * Generate the content of photographer page
    * @param {string} sortType
    */
-  contentPhotographer(sortType) {
+  contentPhotographer(sortType, reloadLightBox = true) {
     const photographerID = getUrlParameter("id");
 
     // Because content can be sorted we arbitrary remove content from container AND the lightbox
@@ -144,7 +144,7 @@ class AppPhotographer {
         }
 
         // lightbox init
-        if (index == array.length - 1) {
+        if (index == array.length - 1 && reloadLightBox) {
           LightboxTemplate.lightbox();
         }
 
@@ -172,7 +172,7 @@ class AppPhotographer {
         const inputValue = input.value;
         input.checked = true;
 
-        this.contentPhotographer(inputValue);
+        this.contentPhotographer(inputValue, false);
       }
 
       parentElement.classList.toggle("expanded");
