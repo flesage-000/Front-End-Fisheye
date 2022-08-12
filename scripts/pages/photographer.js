@@ -36,6 +36,7 @@ class AppPhotographer {
     const dropdownSorter = new DropdownSorter();
     const dropdownElement = dropdownSorter.CreateDropdownSorter();
     this.$mediaContentWrapper.insertAdjacentElement("afterbegin", dropdownElement);
+
     this.dropdownEvent(dropdownElement);
 
     // Create likes counter
@@ -156,7 +157,8 @@ class AppPhotographer {
    * The dropdown event
    * @param {object} dropdownElement
    */
-  dropdownEvent(dropdownElement) {
+  dropdownEvent(dropdownContainer) {
+    const dropdownElement = dropdownContainer.querySelector(".dropdown");
     dropdownElement.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
