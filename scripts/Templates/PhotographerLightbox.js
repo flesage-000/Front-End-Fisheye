@@ -86,10 +86,6 @@ class PhotographerLightbox {
               const mediaToFocusOnClose = lightbox.querySelector(".lightbox__controller__closer button").getAttribute("data-index");
 
               document.querySelector("article[data-index=\"" + mediaToFocusOnClose + "\"] a").focus();
-
-              // to avoid display of 2 media in case of lightbox is reopened, we need to hide displayed media
-              // console.log("plop", lightbox.querySelector(".lightbox__viewer__media[style^=\"display\"]"));
-              // lightbox.querySelector(".lightbox__viewer__media[style^=\"display\"]").style.display = null;
               break;
             }
           }
